@@ -38,7 +38,7 @@ const eyebrow = (t, c = RED) =>
 
 const h1 = (t) =>
   `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(1.7rem,5.4cqw,2.7rem);` +
-  `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:#fff">${t}</h1>`;
+  `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:${INK}">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
   `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.35rem,3.6cqw,1.95rem);` +
@@ -80,9 +80,14 @@ const row = (kids, { gap = 44, basis = 320, align = 'flex-start', weights = [] }
   kids.map((k, i) => `<div style="flex:${weights[i] ?? 1} 1 ${basis}px;min-width:0">${k}</div>`).join('') +
   '</div>';
 
-const section = (inner, { bg = '#fff', pad = 56 } = {}) =>
-  `<section style="background:${bg};padding:${pad}px 0"><div style="max-width:1100px;` +
-  `margin:0 auto;padding:0 22px">${inner}</div></section>`;
+// No section ever paints a ground — it sits on whatever the host page provides, so the
+// block blends in instead of stacking rectangles down the page. background:transparent
+// is stated rather than omitted so a theme rule cannot fill it (armour() adds
+// !important to every background we declare). A hairline is the only separator.
+const section = (inner, { pad = 54, seam = true } = {}) =>
+  `<section style="background:transparent;padding:${pad}px 0` +
+  (seam ? `;border-top:1px solid ${LINE}` : '') +
+  `"><div style="max-width:1100px;margin:0 auto;padding:0 22px">${inner}</div></section>`;
 
 const centred = (inner) => `<div style="text-align:center;max-width:700px;margin:0 auto 40px">${inner}</div>`;
 const col = (inner) => `<div style="max-width:680px;margin:0 auto">${inner}</div>`;
@@ -93,23 +98,24 @@ const img = (file, w, h, alt, style) =>
 // ---- page -------------------------------------------------------------------
 const HERO = section(
   row([
-    eyebrow('Eglinton Avenue East &middot; Scarborough', '#9a9a9a') + h1('The Swinging Lady') +
+    eyebrow('Eglinton Avenue East &middot; Scarborough') + h1('The Swinging Lady') +
     `<div style="margin-top:22px">` +
       p("Toronto's iconic billboard — a 40-foot illuminated figure who has been gliding back and " +
         'forth above Eglinton Avenue East since 1962, quietly inviting every passing driver to swing on by.',
-        { fs: 18, lh: 29, c: DIM, mb: 0 }) + '</div>' +
+        { fs: 18, lh: 29, c: BODY, mb: 0 }) + '</div>' +
     `<div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px">` +
       btn('tel:+14373715007', 'Call 437-371-5007', 'red') +
-      btn('#gmc-landmark', 'Read Her Story', 'light') + '</div>',
+      btn('#gmc-landmark', 'Read Her Story', 'line') + '</div>',
     `<div style="text-align:center">` +
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
           'max-width:300px;width:100%;height:auto;margin:0 auto') + '</div>',
   ], { basis: 280, align: 'center', weights: [1.5, 1] }),
-  { bg: '#000', pad: 48 });
+  { pad: 48, seam: false });
 
-const STRIP = `<div style="background:${RED};padding:16px 22px;text-align:center">` +
+const STRIP = `<div style="background:transparent;padding:18px 22px;text-align:center;` +
+  `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
   `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(12px,1.7cqw,16px);` +
-  `letter-spacing:1.4px;text-transform:uppercase;color:#fff">Swinging over Eglinton Avenue East since 1962</div></div>`;
+  `letter-spacing:1.4px;text-transform:uppercase;color:${RED}">Swinging over Eglinton Avenue East since 1962</div></div>`;
 
 const LANDMARK = `<a id="gmc-landmark"></a>` + section(
   centred(eyebrow('The Landmark') + h2('A 40-Foot Toronto Landmark') + rule('center')) +
@@ -133,7 +139,7 @@ const stat = (n, label) =>
   `<div style="margin-top:10px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
-const STATS = `<div style="background:#fff;border-top:2px solid ${INK};border-bottom:1px solid ${LINE}">` +
+const STATS = `<div style="background:transparent;border-top:2px solid ${INK};border-bottom:1px solid ${LINE}">` +
   `<div style="max-width:1100px;margin:0 auto;padding:0 22px;display:flex;flex-wrap:wrap">` +
   [['1962', 'First Raised'], ['40 ft', 'Tall'], ['60+', 'Years Swinging'], ['1', 'Toronto Landmark']]
     .map(([n, l], i) => `<div style="flex:1 1 150px;${i ? `border-left:1px solid ${LINE}` : ''}">${stat(n, l)}</div>`)
@@ -156,7 +162,7 @@ const SEASONS = section(
       `font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:${MUTED}">` +
       'Above Eglinton Avenue East since 1962</div></div>',
   ], { basis: 300 }),
-  { bg: GREY });
+  {});
 
 const tl = (yr, head, text, hot) =>
   `<div style="padding:28px 0;border-top:1px solid ${LINE}">` +
@@ -191,7 +197,7 @@ const TIMELINE = `<a id="gmc-timeline"></a>` + section(
 
 // The call-to-action carries its weight through the red button, not a black ground.
 const band = (eb, head, sub) =>
-  `<section style="background:${GREY};padding:56px 22px;text-align:center;` +
+  `<section style="background:transparent;padding:54px 22px;text-align:center;` +
   `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
   `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb) + h2(head) +
   `<div style="margin:20px 0 28px">${p(sub, { c: MUTED, mb: 0 })}</div>` +
@@ -263,7 +269,7 @@ const DOCTOR = `<a id="gmc-doctor"></a>` + section(
               ['Freight', 'PDI', 'Admin fee', 'OMVIC fee', 'Air conditioning charge'], INK, '&#10003;'),
       feeList('The Only Extras — Paid To Government', ['HST', 'License plates'], RED, '+'),
     ], { gap: 36, basis: 240 }) + '</div>'),
-  { bg: GREY });
+  {});
 
 const BACKGROUND = section(
   centred(eyebrow('The Background') + h2('How Nav Got Here') + rule('center') +
@@ -319,7 +325,7 @@ const CDD6 = section(
       'all dealer fees included.', { fs: 15, lh: 24, c: MUTED, mb: 0 }) + '</div>' +
     `<div style="margin-top:22px">${btn('https://cdd6.ca', 'Fill at cdd6.ca', 'line')}</div>`,
   ], { basis: 300 }),
-  { bg: GREY });
+  {});
 
 const WHY = section(
   centred(eyebrow('Why “Prescriptions”?') + h2('The Metaphor Is Not An Accident') + rule('center')) +
