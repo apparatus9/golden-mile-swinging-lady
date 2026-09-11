@@ -37,7 +37,7 @@ const eyebrow = (t, c = RED) =>
   `letter-spacing:3px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(38px,7.2cqw,80px);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(32px,5cqw,56px);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:${INK}">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
@@ -124,15 +124,15 @@ const HERO = section(
     `<div style="margin-top:22px">` +
       p("Toronto's iconic billboard — a 40-foot illuminated figure who has been gliding back and " +
         'forth above Eglinton Avenue East since 1962, quietly inviting every passing driver to swing on by.',
-        { fs: 18, lh: 29, c: BODY, mb: 0 }) + '</div>' +
+        { fs: 17, lh: 28, c: BODY, mb: 0 }) + '</div>' +
     `<div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:12px">` +
       btn('tel:+14373715007', 'Call 437-371-5007', 'red') +
       btn('#gmc-landmark', 'Read Her Story', 'line') + '</div>',
     `<div style="text-align:center">` +
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
-          'max-width:470px;width:100%;height:auto;margin:0 auto') + '</div>',
-  ], { basis: 280, align: 'center', weights: [1.25, 1] }),
-  { pad: 64, seam: false });
+          'max-width:330px;width:100%;height:auto;margin:0 auto') + '</div>',
+  ], { basis: 260, align: 'center', weights: [1.35, 1] }),
+  { pad: 44, seam: false });
 
 const STRIP = `<div style="background:transparent;padding:18px 22px;text-align:center;` +
   `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
