@@ -89,19 +89,14 @@ const section = (inner, { pad = 54, seam = true } = {}) =>
   (seam ? `;border-top:1px solid ${LINE}` : '') +
   `"><div style="max-width:1100px;margin:0 auto;padding:0 22px">${inner}</div></section>`;
 
+// A breather for the long stretches: a hairline broken by the same small red square
+// that marks the turn in the timeline.
 const mark = () =>
   '<div style="display:flex;align-items:center;gap:20px;max-width:680px;margin:44px auto 0">' +
     `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
-    `<span style="font-family:${HEAD};font-weight:400;font-size:21px;line-height:1;color:${RED}">&#8478;</span>` +
+    `<span style="display:inline-block;width:7px;height:7px;background:${RED};transform:rotate(45deg)"></span>` +
     `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
   '</div>';
-
-// A diagnosis reads as two findings side by side, not as two more paragraphs.
-const finding = (label, text, colour) =>
-  `<div style="border-top:2px solid ${colour};padding-top:15px">` +
-  `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
-  `text-transform:uppercase;color:${colour};margin:0 0 10px">${label}</div>` +
-  p(text, { fs: 16, lh: 26, mb: 0 }) + '</div>';
 
 const centred = (inner) => `<div style="text-align:center;max-width:700px;margin:0 auto 40px">${inner}</div>`;
 const col = (inner) => `<div style="max-width:680px;margin:0 auto">${inner}</div>`;
@@ -206,7 +201,7 @@ const TIMELINE = `<a id="gmc-timeline"></a>` + section(
      'written up in the local press and is fondly remembered by anyone who grew up in the east end.') +
   tl('Today', 'Golden Mile Chrysler, 1743 Eglinton Ave. East',
      'She watches over the lot near Bermondsey Road, now led by President Navin Kotecha — The Car Doctor — ' +
-     'and the CDD6 campaign. Same swing. Same invitation. A very different way of selling cars underneath it.') +
+     'Same swing. Same invitation. A very different way of selling cars underneath it.') +
   '</div>');
 
 // The call-to-action carries its weight through the red button, not a black ground.
@@ -233,8 +228,8 @@ const TODAY = `<a id="gmc-today"></a>` + section(
     lede('Today the Swinging Lady watches over Golden Mile Chrysler at 1743 Eglinton Avenue East, near ' +
          'Bermondsey Road.') +
     p('The dealership is now led by President <strong style="color:' + INK + '">Navin Kotecha — The Car ' +
-      'Doctor</strong> — and runs the CDD6 campaign: transparent, all-in weekly lease pricing on new ' +
-      'Chrysler, Dodge, Jeep, and RAM vehicles, with every dealer fee built into the number you see.') +
+      'Doctor</strong> — who runs it on transparent, all-in pricing for new Chrysler, Dodge, Jeep and RAM ' +
+      'vehicles, with every dealer fee built into the number you see.') +
     p('So the landmark that has invited drivers to “swing on by” since 1962 now points to something ' +
       'genuinely worth stopping for: honest pricing, no runaround, and a president who answers for every ' +
       'deal personally.', { mb: 0 }) +
@@ -247,9 +242,6 @@ const TODAY = `<a id="gmc-today"></a>` + section(
     link('#gmc-doctor', 'Meet The Car Doctor',
          'How Navin Kotecha went from the shop floor to the front of the building — and why it changed the pricing.',
          'Navin Kotecha &rarr;'),
-    link('https://cdd6.ca', "This Month's CDD6 Deals",
-         'Six prescriptions. All-in weekly lease pricing. Published before you ever pick up the phone.',
-         'See the deals &rarr;', true),
   ], { gap: 32, basis: 230 }) + '</div>');
 
 const feeList = (title, items, titleColour, tick) =>
@@ -266,16 +258,14 @@ const DOCTOR = `<a id="gmc-doctor"></a>` + section(
           h2('Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.') + rule('center')) +
   col(
     lede('Nav runs Golden Mile Chrysler. He thinks the way most dealerships sell cars is broken — too many ' +
-         'hidden fees, too much back-and-forth, too much wasted time. So he built CDD6 to fix it.') +
-    p('<strong style="color:'+INK+'">CDD6 stands for Car Doctor Deals in the 6ix.</strong> Every month, Nav ' +
-      'prescribes six lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles. Each one is tagged like a ' +
-      'medical prescription — Rx #001 through Rx #006 — because the whole concept is built around one idea.',
-      { c: BODY }) +
-    p('The weekly lease prices on CDD6 include everything the dealer controls. Freight, PDI, admin fees, ' +
+         'hidden fees, too much back-and-forth, too much wasted time. So he fixed it.') +
+    p('Every price he advertises is the price you pay. No line appears at the desk that was not on the ' +
+      'page, and no number moves between the phone call and the paperwork.', { c: BODY }) +
+    p('Those prices include everything the dealer controls. Freight, PDI, admin fees, ' +
       'OMVIC fee — all baked in. The only extras are HST and license plates, because those go to the ' +
       'government, not the dealership.', { c: DIM }) +
     p('That is not a marketing gimmick. It is Ontario law under OMVIC. The difference is that Nav actually ' +
-      'follows it to the letter and puts the real number on the website before you ever pick up the phone.',
+      'follows it to the letter and puts the real number in front of you before you ever pick up the phone.',
       { c: BODY, mb: 0 }) +
     `<div style="margin-top:36px">` +
     row([
@@ -306,61 +296,6 @@ const BACKGROUND = section(
       'location, the legacy, the Swinging Lady billboard that half of Toronto grew up driving past. What it ' +
       'needed was a new approach. Nav brought one.', { mb: 0 }) + '</div>'));
 
-const rx = (n, label) =>
-  `<div style="display:flex;align-items:baseline;gap:16px;padding:13px 0;border-bottom:1px solid ${LINE}">` +
-  `<span style="font-family:${HEAD};font-weight:500;font-size:14px;letter-spacing:1.6px;color:${RED};` +
-  `flex:0 0 74px">${n}</span>` +
-  `<span style="font-family:${SANS};font-size:17px;color:${BODY}">${label}</span></div>`;
-
-const CDD6 = section(
-  row([
-    eyebrow('What CDD6 Actually Is') + h2("CDD6 Is Nav's Prescription Pad") + rule() +
-    `<div style="margin-top:26px">` +
-    p('CDD6 is not the dealership. Golden Mile Chrysler is the dealership.') +
-    p('Every month, Stellantis — the parent company behind Chrysler, Dodge, Jeep, and RAM — releases new OEM ' +
-      'incentive programs. Factory rebates, subvented lease rates, loyalty bonuses. Most dealerships bury ' +
-      'those programs in the fine print and use them to pad their own margins. Nav takes those programs and ' +
-      'passes them through to the customer as aggressively as possible, then publishes the result on ' +
-      `<a href="https://cdd6.ca" target="_blank" rel="noopener" style="color:${RED};font-weight:bold;` +
-      'text-decoration:none">cdd6.ca</a>.') +
-    p('The six deals rotate monthly. When a new Stellantis program drops, Nav recalculates, picks the six ' +
-      'strongest prescriptions, and publishes them. Old deal pages redirect to the permanent model pages, so ' +
-      'you always see what is current, never what expired last month.') +
-    p('Each deal shows the weekly lease payment, the cash down, the term, the rate, the kilometre allowance, ' +
-      'and the complete due-on-delivery breakdown. Everything. On the page. Before you call.', { mb: 0 }) + '</div>',
-
-    `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
-    `text-transform:uppercase;color:${RED};margin:0 0 6px">This Month's Six</div>` +
-    `<div style="border-top:1px solid ${LINE}">` +
-    rx('Rx #001', 'Chrysler') + rx('Rx #002', 'Dodge') + rx('Rx #003', 'Jeep') +
-    rx('Rx #004', 'RAM') + rx('Rx #005', "Dealer's choice") + rx('Rx #006', 'Door-crasher') + '</div>' +
-    `<div style="margin-top:22px">` +
-    p('Six prescriptions, refilled every month against the latest Stellantis programs. Weekly lease pricing, ' +
-      'all dealer fees included.', { fs: 15, lh: 24, c: MUTED, mb: 0 }) + '</div>' +
-    `<div style="margin-top:22px">${btn('https://cdd6.ca', 'Fill at cdd6.ca', 'line')}</div>`,
-  ], { basis: 300 }),
-  {});
-
-const WHY = section(
-  centred(eyebrow('Why “Prescriptions”?') + h2('The Metaphor Is Not An Accident') + rule('center')) +
-  col(
-    lede('Nav calls himself The Car Doctor because the problem he is solving feels like a diagnosis.') +
-    '<div style="margin:30px 0 0">' + row([
-      finding('The symptoms',
-        'You search for a car deal online, you find a price that looks good, you drive to the dealership, ' +
-        'you sit down, and the number changes. Freight gets added. An admin fee appears. PDI was not ' +
-        'included. Suddenly the deal you saw online is hundreds more per month than what you budgeted. ' +
-        'That is the disease.', INK),
-      finding('The prescription',
-        'Publish the real, all-in price before the customer walks in. Include every fee the dealer ' +
-        'controls. Make the weekly payment the actual weekly payment — plus government taxes and plates, ' +
-        'and nothing else. No negotiation required.', RED),
-    ], { gap: 34, basis: 250 }) + '</div>' +
-    quote('CDD6 deals are labelled Rx #001 through Rx #006 because they are meant to be filled, not haggled over.') + mark() +
-    `<div style="margin-top:36px">` +
-    p('You see the prescription. You call the number. The price on the phone is the price on the page. That ' +
-      'is how it works.', { mb: 0 }) + '</div>'));
-
 const faq = (q, a) =>
   `<details style="border-bottom:1px solid ${LINE}"><summary style="cursor:pointer;padding:20px 0;` +
   `font-family:${HEAD};font-weight:500;font-size:18px;letter-spacing:1.2px;text-transform:uppercase;` +
@@ -373,20 +308,18 @@ const FAQ = `<a id="gmc-faq"></a>` + section(
   `<div style="max-width:760px;margin:0 auto;border-top:1px solid ${LINE}">` +
   faq('Who is The Car Doctor?',
       'The Car Doctor is Navin Kotecha — Nav — President of Golden Mile Chrysler at 1743 Eglinton Avenue ' +
-      'East in Toronto. Nav created the CDD6 campaign (Car Doctor Deals in the 6ix), which prescribes ' +
-      'monthly door-crasher lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles with fully ' +
-      `transparent, all-in weekly pricing. Call his team at ${TEL}.`) +
+      'East in Toronto. He sells new Chrysler, Dodge, Jeep and RAM vehicles on fully transparent, all-in ' +
+      `pricing: every dealer fee is built into the number you are quoted. Call his team at ${TEL}.`) +
   faq('Who is Navin Kotecha?',
       "Navin Kotecha is the President of Golden Mile Chrysler, one of Toronto's longest-running Chrysler " +
       'Dodge Jeep RAM dealerships. Known as The Car Doctor, Nav built his career across multiple major ' +
-      'dealership groups in Toronto before taking the helm at Golden Mile. He launched the CDD6 campaign to ' +
-      'bring transparent, OMVIC-compliant lease deals directly to Toronto drivers without the typical ' +
-      'dealership runaround.') +
-  faq('What does The Car Doctor prescribe?',
-      'The Car Doctor prescribes six monthly lease deals — tagged Rx #001 through Rx #006 — on new Chrysler, ' +
-      'Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler. Each prescription features aggressive weekly ' +
-      'lease pricing that includes all dealer fees (freight, PDI, admin, OMVIC). Only HST and licensing are ' +
-      'extra. The deals rotate monthly based on Stellantis OEM incentive programs.') +
+      'dealership groups in Toronto before taking the helm at Golden Mile. He brought transparent, ' +
+      'OMVIC-compliant pricing directly to Toronto drivers without the typical dealership runaround.') +
+  faq('What makes the pricing different?',
+      'The number you are quoted is the number you pay. Every fee the dealer controls is already in it — ' +
+      'freight, PDI, administration, the OMVIC fee and the air conditioning charge. Only HST and licensing ' +
+      'are added, because those are payable to the government rather than the dealership. It is what ' +
+      "Ontario's all-in price advertising rules require, followed to the letter.") +
   faq('How do I contact The Car Doctor?',
       `Call The Car Doctor's team directly at ${TEL}. Golden Mile Chrysler is located at 1743 Eglinton ` +
       'Avenue East, Toronto, ON M4A 1J8 — the dealership with the iconic Swinging Lady billboard. No ' +
@@ -399,13 +332,13 @@ const FAQ = `<a id="gmc-faq"></a>` + section(
   `<details style="max-width:760px;margin:34px auto 0"><summary style="cursor:pointer;font-family:${HEAD};` +
   `font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:${MUTED};padding:6px 0">` +
   'View Full Terms</summary><div style="padding-top:16px">' +
-  p('All CDD6 weekly lease prices include every fee the dealer controls — freight, PDI, administration, air ' +
+  p('All advertised prices include every fee the dealer controls — freight, PDI, administration, air ' +
     'conditioning charge, and the OMVIC fee — in accordance with Ontario’s all-in price advertising ' +
     'requirements under the Motor Vehicle Dealers Act as administered by OMVIC. HST and license plate fees ' +
     'are extra, as they are payable to the government and not to the dealership.', { fs: 14, lh: 23, c: MUTED }) +
-  p('Lease offers are based on current Stellantis Canada OEM incentive programs and are subject to change ' +
+  p('Offers are based on current Stellantis Canada OEM incentive programs and are subject to change ' +
     'without notice when those programs change. Advertised payments assume the stated term, cash down, ' +
-    'annual kilometre allowance, and lease rate shown on the individual deal page at cdd6.ca. Additional ' +
+    'annual kilometre allowance and rate. Additional ' +
     'kilometres, excess wear and tear, and optional equipment are extra. Offers apply to new, in-stock ' +
     'Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler, 1743 Eglinton Avenue East, Toronto, ' +
     'ON M4A 1J8, and are subject to credit approval and availability. Vehicle images and descriptions are ' +
@@ -421,10 +354,7 @@ const page = [HERO, STRIP, LANDMARK, STATS, SEASONS, TIMELINE,
   band('Swing On By — Or Just Call The Doctor',
        'The Swinging Lady marks the spot.<br>The Car Doctor handles the rest.',
        'Sixty years of pointing drivers to this corner. Here is what is waiting underneath her now.'),
-  TODAY, DOCTOR, BACKGROUND, CDD6, WHY,
-  band('Fill Your Prescription', "See This Month's Deals At cdd6.ca",
-       'No games. No runaround. Just the real price.'),
-  FAQ].join('').replace(/\n\s*/g, '');
+  TODAY, DOCTOR, BACKGROUND, FAQ].join('').replace(/\n\s*/g, '');
 
 // One wrapper declaring an inline-size container, so the cqw units above measure the
 // content cell — 944px here, a Foundation `cell large-8` beside the sidebar — instead
