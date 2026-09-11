@@ -37,7 +37,18 @@ rather than RGBA — 251 KB instead of 748 KB, with no visible loss.
 
 ## Pasting into WordPress / eDealer
 
-**Use `edealer/legacy-inline.html`.** One paste, into the code box. Nothing else.
+**Use .** One paste, into the code box.
+
+Two WordPress settings matter as much as the markup, both found by measuring the live
+page rather than guessing:
+
+1. **Page Attributes -> Template must be .** On  the content
+   sits in a 944px Foundation  beside the Contact/Hours sidebar, which is
+   what made the page look cramped and clipped.
+2. ** goes in Appearance -> Customize -> Additional CSS.**
+   Three rules, and the only thing they do is swing the hero figure:  has no
+   inline form. It matches , so the one hero image is the
+   only element on the whole site it can touch.
 
 `node build-edealer-inline.mjs` generates it. Every style is an inline `style=""`
 attribute, because that is the only styling the CMS leaves alone:

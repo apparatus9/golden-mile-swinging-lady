@@ -1,0 +1,8 @@
+/* Swinging Lady legacy page — restores the pendulum on the hero figure.
+   The page itself is styled with inline attributes (eDealer's code box strips <style>),
+   and @keyframes has no inline form, so this one rule lives here instead.
+   It matches the image by filename, so nothing else on the site can be affected.
+   Pivot is 68.4% across the artwork: the point the two ropes hang from. */
+@keyframes gmcSwingingLady{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+img[src*="swinging-lady.png"]{transform-origin:68.4% 0;animation:gmcSwingingLady 5.6s cubic-bezier(.42,0,.58,1) infinite alternate}
+@media (prefers-reduced-motion:reduce){img[src*="swinging-lady.png"]{animation:none}}
