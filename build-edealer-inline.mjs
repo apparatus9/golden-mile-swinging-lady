@@ -37,11 +37,11 @@ const eyebrow = (t, c = RED) =>
   `letter-spacing:2.6px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(1.9rem,7cqw,3.3rem);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(1.7rem,5.4cqw,2.7rem);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:#fff">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
-  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.5rem,4.4cqw,2.2rem);` +
+  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.35rem,3.6cqw,1.95rem);` +
   `line-height:1.12;text-transform:uppercase;letter-spacing:1.1px;color:${c}">${t}</h2>`;
 
 const h3 = (t, c = INK) =>
@@ -55,7 +55,7 @@ const rule = (align) =>
 const quote = (t, c = INK) =>
   `<div style="margin:36px 0 0">` +
   `<div style="width:44px;height:3px;background:${RED};margin:0 0 20px"></div>` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.2rem,3cqw,1.6rem);` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.1rem,2.6cqw,1.45rem);` +
   `line-height:1.32;letter-spacing:.3px;color:${c}">${t}</div></div>`;
 
 const btn = (href, label, kind) => {
@@ -80,7 +80,7 @@ const row = (kids, { gap = 44, basis = 320, align = 'flex-start', weights = [] }
   kids.map((k, i) => `<div style="flex:${weights[i] ?? 1} 1 ${basis}px;min-width:0">${k}</div>`).join('') +
   '</div>';
 
-const section = (inner, { bg = '#fff', pad = 64 } = {}) =>
+const section = (inner, { bg = '#fff', pad = 56 } = {}) =>
   `<section style="background:${bg};padding:${pad}px 0"><div style="max-width:1100px;` +
   `margin:0 auto;padding:0 22px">${inner}</div></section>`;
 
@@ -105,10 +105,10 @@ const HERO = section(
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
           'max-width:300px;width:100%;height:auto;margin:0 auto') + '</div>',
   ], { basis: 280, align: 'center', weights: [1.5, 1] }),
-  { bg: '#000', pad: 56 });
+  { bg: '#000', pad: 48 });
 
 const STRIP = `<div style="background:${RED};padding:16px 22px;text-align:center">` +
-  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(13px,2cqw,17px);` +
+  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(12px,1.7cqw,16px);` +
   `letter-spacing:1.4px;text-transform:uppercase;color:#fff">Swinging over Eglinton Avenue East since 1962</div></div>`;
 
 const LANDMARK = `<a id="gmc-landmark"></a>` + section(
@@ -127,7 +127,7 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
 
 const stat = (n, label) =>
   `<div style="text-align:center;padding:30px 12px">` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.8rem,5cqw,2.8rem);line-height:1;color:#fff">${n}</div>` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.2cqw,2.4rem);line-height:1;color:#fff">${n}</div>` +
   `<div style="margin-top:12px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
@@ -192,7 +192,7 @@ const band = (eb, head, sub) =>
   `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb, '#9a9a9a') + h2(head, '#fff') +
   `<div style="margin:20px 0 28px">${p(sub, { c: '#9a9a9a', mb: 0 })}</div>` +
   `<a href="tel:+14373715007" style="display:inline-block;font-family:${HEAD};font-weight:500;` +
-  `font-size:clamp(1.4rem,4.6cqw,2.2rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
+  `font-size:clamp(1.25rem,3.6cqw,1.9rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
   `padding:13px 38px;text-decoration:none">437-371-5007</a></div></section>`;
 
 const link = (href, title, text, cue, ext) =>
