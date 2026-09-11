@@ -84,7 +84,7 @@ const row = (kids, { gap = 44, basis = 320, align = 'flex-start', weights = [] }
 // block blends in instead of stacking rectangles down the page. background:transparent
 // is stated rather than omitted so a theme rule cannot fill it (armour() adds
 // !important to every background we declare). A hairline is the only separator.
-const section = (inner, { pad = 74, seam = true } = {}) =>
+const section = (inner, { pad = 74, seam = false } = {}) =>
   `<section style="background:transparent;padding:${pad}px 0` +
   (seam ? `;border-top:1px solid ${LINE}` : '') +
   `"><div style="max-width:1100px;margin:0 auto;padding:0 22px">${inner}</div></section>`;
@@ -96,6 +96,19 @@ const mark = () =>
     `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
     `<span style="display:inline-block;width:7px;height:7px;background:${RED};transform:rotate(45deg)"></span>` +
     `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
+  '</div>';
+
+const opener = (label, heading, blurb) =>
+  '<div style="max-width:820px;margin:0 auto 46px">' +
+    '<div style="display:flex;align-items:center;gap:20px">' +
+      `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
+      `<span style="font-family:${HEAD};font-weight:500;font-size:13px;letter-spacing:3px;` +
+      `text-transform:uppercase;color:${RED};white-space:nowrap">${label}</span>` +
+      `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
+    '</div>' +
+    `<div style="text-align:center;margin-top:30px">${h2(heading)}${rule('center')}` +
+    (blurb ? `<div style="margin-top:22px">${p(blurb, { c: MUTED, mb: 0 })}</div>` : '') +
+    '</div>' +
   '</div>';
 
 const centred = (inner) => `<div style="text-align:center;max-width:700px;margin:0 auto 40px">${inner}</div>`;
@@ -127,7 +140,7 @@ const STRIP = `<div style="background:transparent;padding:18px 22px;text-align:c
   `letter-spacing:1.4px;text-transform:uppercase;color:${RED}">Swinging over Eglinton Avenue East since 1962</div></div>`;
 
 const LANDMARK = `<a id="gmc-landmark"></a>` + section(
-  centred(eyebrow('The Landmark') + h2('A 40-Foot Toronto Landmark') + rule('center')) +
+  opener('The Landmark', 'A 40-Foot Toronto Landmark') +
   col(
     lede('Ask anyone who has driven Eglinton Avenue East through Scarborough and they will know exactly ' +
          'where Golden Mile Chrysler is — even if they have never set foot on the lot.') +
@@ -155,9 +168,9 @@ const STATS = `<div style="background:transparent;border-top:2px solid ${INK};bo
     .join('') + '</div></div>';
 
 const SEASONS = section(
+  opener('Her Wardrobe', 'She Dresses for the Season') +
   row([
-    eyebrow('Her Wardrobe') + h2('She Dresses for the Season') + rule() +
-    `<div style="margin-top:26px">` +
+    `<div>` +
       lede('Part of the charm is that she pays attention to the weather.') +
       p('In summer the Swinging Lady wears a bikini; when the snow arrives off Lake Ontario, she bundles up ' +
         'in a parka. Generations of GTA kids have watched for her seasonal wardrobe change from the back seat ' +
@@ -184,7 +197,7 @@ const tl = (yr, head, text, hot) =>
   p(text, { mb: 0 }) + '</div>';
 
 const TIMELINE = `<a id="gmc-timeline"></a>` + section(
-  centred(eyebrow('Sixty Years Above Eglinton') + h2('Still Swinging, Through Every Era') + rule('center')) +
+  opener('Sixty Years Above Eglinton', 'Still Swinging, Through Every Era') +
   `<div style="max-width:720px;margin:0 auto">` +
   tl('1962', 'She goes up over Willison Chrysler',
      'A 40-foot illuminated figure is raised above the lot on Eglinton Avenue East. The dealership is called ' +
@@ -223,7 +236,7 @@ const link = (href, title, text, cue, ext) =>
   `letter-spacing:2px;text-transform:uppercase;color:${RED}">${cue}</div></a>`;
 
 const TODAY = `<a id="gmc-today"></a>` + section(
-  centred(eyebrow('Today') + h2('Still Swinging at Golden Mile Chrysler') + rule('center')) +
+  opener('Today', 'Still Swinging at Golden Mile Chrysler') +
   col(
     lede('Today the Swinging Lady watches over Golden Mile Chrysler at 1743 Eglinton Avenue East, near ' +
          'Bermondsey Road.') +
@@ -254,8 +267,7 @@ const feeList = (title, items, titleColour, tick) =>
   ).join('');
 
 const DOCTOR = `<a id="gmc-doctor"></a>` + section(
-  centred(eyebrow('The Short Version') +
-          h2('Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.') + rule('center')) +
+  opener('The Short Version', 'Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.') +
   col(
     lede('Nav runs Golden Mile Chrysler. He thinks the way most dealerships sell cars is broken — too many ' +
          'hidden fees, too much back-and-forth, too much wasted time. So he fixed it.') +
@@ -276,8 +288,8 @@ const DOCTOR = `<a id="gmc-doctor"></a>` + section(
   {});
 
 const BACKGROUND = section(
-  centred(eyebrow('The Background') + h2('How Nav Got Here') + rule('center') +
-          `<div style="margin-top:20px">${p('He learned the business from the shop floor, not the showroom floor. That is the whole difference.', { c: MUTED, mb: 0 })}</div>`) +
+  opener('The Background', 'How Nav Got Here',
+          'He learned the business from the shop floor, not the showroom floor. That is the whole difference.') +
   col(
     lede('Navin Kotecha did not grow up planning to run a car dealership. But the automotive industry found ' +
          'him early, and he stayed because he was good at it.') +
@@ -304,7 +316,7 @@ const faq = (q, a) =>
 const TEL = `<a href="tel:+14373715007" style="color:${RED};font-weight:bold;text-decoration:none">437-371-5007</a>`;
 
 const FAQ = `<a id="gmc-faq"></a>` + section(
-  centred(eyebrow('About The Car Doctor') + h2('Frequently Asked Questions') + rule('center')) +
+  opener('About The Car Doctor', 'Frequently Asked Questions') +
   `<div style="max-width:760px;margin:0 auto;border-top:1px solid ${LINE}">` +
   faq('Who is The Car Doctor?',
       'The Car Doctor is Navin Kotecha — Nav — President of Golden Mile Chrysler at 1743 Eglinton Avenue ' +
