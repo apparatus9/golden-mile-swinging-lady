@@ -372,7 +372,23 @@ const armour = (s) => s.replace(/style="([^"]*)"/g, (m, decls) =>
     return /^(background|background-color|color|border-color)$/.test(prop) ? d + ' !important' : d;
   }).join(';') + '"');
 
-await writeFile('edealer/legacy-inline.html', armour(wrapped) + '\n');
+const out = armour(wrapped);
+await writeFile('edealer/legacy-inline.html', out + '\n');
+
+// A clean preview: the page centred at the 944px column measured on the live site,
+// nothing else on screen. Earlier versions of this file carried a stand-in sidebar and
+// a deliberately hostile stylesheet — useful for testing, noise for reviewing.
+await writeFile('edealer/preview-inline.html', `<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Swinging Lady — page preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;background:#fff}
+  .page{width:100%;max-width:944px;margin:0 auto}
+</style></head><body><div class="page">
+${out}
+</div></body></html>
+`);
 
 // ---- checks ------------------------------------------------------------------
 for (const bad of [/<vw/i, /<style/i, /<script/i, /<svg/i, /<link/i, /<!DOCTYPE/i, /<html[\s>]/i]) {
