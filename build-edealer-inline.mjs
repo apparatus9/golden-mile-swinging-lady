@@ -33,15 +33,15 @@ const p = (t, o = {}) =>
 const lede = (t, c = INK) => p(t, { fs: 19, lh: 30, c });
 
 const eyebrow = (t, c = RED) =>
-  `<p style="margin:0 0 14px;font-family:${HEAD};font-weight:500;font-size:12px;` +
-  `letter-spacing:2.6px;text-transform:uppercase;color:${c}">${t}</p>`;
+  `<p style="margin:0 0 12px;font-family:${HEAD};font-weight:500;font-size:13px;` +
+  `letter-spacing:3px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(1.7rem,5.4cqw,2.7rem);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(2.3rem,8.4cqw,4.4rem);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:${INK}">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
-  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.35rem,3.6cqw,1.95rem);` +
+  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,5cqw,2.6rem);` +
   `line-height:1.12;text-transform:uppercase;letter-spacing:1.1px;color:${c}">${t}</h2>`;
 
 const h3 = (t, c = INK) =>
@@ -49,13 +49,13 @@ const h3 = (t, c = INK) =>
   `line-height:1.2;text-transform:uppercase;letter-spacing:1.4px;color:${c}">${t}</h3>`;
 
 const rule = (align) =>
-  `<hr style="width:44px;height:3px;background:${RED};border:0;margin:18px ${align === 'center' ? 'auto' : '0'} 0">`;
+  `<hr style="width:56px;height:4px;background:${RED};border:0;margin:22px ${align === 'center' ? 'auto' : '0'} 0">`;
 
 // the red bar was a ::before; inline styles have no pseudo-elements, so it is real now
 const quote = (t, c = INK) =>
   `<div style="margin:36px 0 0">` +
   `<div style="width:44px;height:3px;background:${RED};margin:0 0 20px"></div>` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.1rem,2.6cqw,1.45rem);` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.35rem,3.6cqw,2rem);` +
   `line-height:1.32;letter-spacing:.3px;color:${c}">${t}</div></div>`;
 
 const btn = (href, label, kind) => {
@@ -84,7 +84,7 @@ const row = (kids, { gap = 44, basis = 320, align = 'flex-start', weights = [] }
 // block blends in instead of stacking rectangles down the page. background:transparent
 // is stated rather than omitted so a theme rule cannot fill it (armour() adds
 // !important to every background we declare). A hairline is the only separator.
-const section = (inner, { pad = 54, seam = true } = {}) =>
+const section = (inner, { pad = 74, seam = true } = {}) =>
   `<section style="background:transparent;padding:${pad}px 0` +
   (seam ? `;border-top:1px solid ${LINE}` : '') +
   `"><div style="max-width:1100px;margin:0 auto;padding:0 22px">${inner}</div></section>`;
@@ -117,7 +117,7 @@ const HERO = section(
       btn('#gmc-landmark', 'Read Her Story', 'line') + '</div>',
     `<div style="text-align:center">` +
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
-          'max-width:300px;width:100%;height:auto;margin:0 auto') + '</div>',
+          'max-width:400px;width:100%;height:auto;margin:0 auto') + '</div>',
   ], { basis: 280, align: 'center', weights: [1.5, 1] }),
   { pad: 48, seam: false });
 
@@ -144,7 +144,7 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
 // a floating rectangle, not as the full-bleed band it is on the standalone page.
 const stat = (n, label) =>
   `<div style="text-align:center;padding:26px 12px">` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.2cqw,2.4rem);line-height:1;color:${INK}">${n}</div>` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(2.4rem,7.5cqw,4.2rem);line-height:1;color:${INK}">${n}</div>` +
   `<div style="margin-top:10px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
@@ -166,7 +166,7 @@ const SEASONS = section(
         'city feels less like advertising and more like a neighbour.', { mb: 0 }) + '</div>',
     `<div style="text-align:center">` +
       img('swinging-lady-bw.png', 680, 1367, 'Illustration of the Swinging Lady on her swing',
-          'max-width:290px;width:100%;height:auto;margin:0 auto') +
+          'max-width:360px;width:100%;height:auto;margin:0 auto') +
       `<div style="border-top:1px solid ${LINE};margin-top:22px;padding-top:16px;font-family:${HEAD};` +
       `font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:${MUTED}">` +
       'Above Eglinton Avenue East since 1962</div></div>',
@@ -211,7 +211,7 @@ const band = (eb, head, sub) =>
   `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb) + h2(head) +
   `<div style="margin:20px 0 28px">${p(sub, { c: MUTED, mb: 0 })}</div>` +
   `<a href="tel:+14373715007" style="display:inline-block;font-family:${HEAD};font-weight:500;` +
-  `font-size:clamp(1.25rem,3.6cqw,1.9rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
+  `font-size:clamp(1.7rem,5cqw,2.7rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
   `padding:13px 38px;text-decoration:none">437-371-5007</a></div></section>`;
 
 const link = (href, title, text, cue, ext) =>
