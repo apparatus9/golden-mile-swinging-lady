@@ -144,13 +144,14 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
   col(
     lede('Ask anyone who has driven Eglinton Avenue East through Scarborough and they will know exactly ' +
          'where Golden Mile Chrysler is — even if they have never set foot on the lot.') +
+    '<div style="column-count:2;column-gap:40px;margin-top:26px">' +
     p('They know it because of the Swinging Lady. For more than sixty years, a 40-foot illuminated figure ' +
       'has perched on a swing above the dealership, gliding back and forth and quietly inviting passing ' +
       'drivers to “swing on by.”') +
     p('She first went up in 1962, back when the dealership was Willison Chrysler. In the decades since, the ' +
       'name on the building has changed and the cars on the lot have changed, but the Swinging Lady has kept ' +
       'swinging — through Toronto winters, summer heat waves, and every era of the city that has grown up ' +
-      'around her.', { mb: 0 }) +
+      'around her.', { mb: 0 }) + '</div>' +
     quote('She is not just decoration. She is a piece of Toronto and Scarborough car-culture history.')));
 
 // Ruled strip rather than a black block: inside a content column a dark panel reads as
@@ -170,6 +171,13 @@ const STATS = `<div style="background:transparent;border-top:2px solid ${INK};bo
 const SEASONS = section(
   opener('Her Wardrobe', 'She Dresses for the Season') +
   row([
+    // artwork leads on this one, so the section does not look like the one before it
+    `<div style="text-align:center">` +
+      img('swinging-lady-bw.png', 680, 1367, 'Illustration of the Swinging Lady on her swing',
+          'max-width:360px;width:100%;height:auto;margin:0 auto') +
+      `<div style="border-top:1px solid ${LINE};margin-top:22px;padding-top:16px;font-family:${HEAD};` +
+      `font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:${MUTED}">` +
+      'Above Eglinton Avenue East since 1962</div></div>',
     `<div>` +
       lede('Part of the charm is that she pays attention to the weather.') +
       p('In summer the Swinging Lady wears a bikini; when the snow arrives off Lake Ontario, she bundles up ' +
@@ -177,24 +185,18 @@ const SEASONS = section(
         'on the drive along Eglinton.') +
       p('It is a small thing, and it is exactly why people remember her. A billboard that changes with the ' +
         'city feels less like advertising and more like a neighbour.', { mb: 0 }) + '</div>',
-    `<div style="text-align:center">` +
-      img('swinging-lady-bw.png', 680, 1367, 'Illustration of the Swinging Lady on her swing',
-          'max-width:360px;width:100%;height:auto;margin:0 auto') +
-      `<div style="border-top:1px solid ${LINE};margin-top:22px;padding-top:16px;font-family:${HEAD};` +
-      `font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:${MUTED}">` +
-      'Above Eglinton Avenue East since 1962</div></div>',
-  ], { basis: 300 }),
+  ], { basis: 280, weights: [1, 1.3] }),
   {});
 
 const tl = (yr, head, text, hot) =>
-  `<div style="padding:28px 0;border-top:1px solid ${LINE}">` +
-  `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
-  `text-transform:uppercase;color:${RED};margin:0 0 9px">${yr}</div>` +
-  (hot ? `<div style="display:flex;align-items:baseline;gap:10px">` +
-         `<span style="display:inline-block;width:7px;height:7px;background:${RED};flex:0 0 7px"></span>` +
-         h3(head) + '</div>'
-       : h3(head)) +
-  p(text, { mb: 0 }) + '</div>';
+  `<div style="display:flex;flex-wrap:wrap;gap:26px;padding:32px 0;border-top:1px solid ${LINE}">` +
+    `<div style="flex:0 0 168px">` +
+      `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(1.3rem,2.8cqw,1.9rem);` +
+      `line-height:1.05;letter-spacing:.5px;text-transform:uppercase;color:${RED}">${yr}</div>` +
+      (hot ? `<div style="width:26px;height:4px;background:${RED};margin-top:12px"></div>` : '') +
+    '</div>' +
+    `<div style="flex:1 1 320px;min-width:0">` + h3(head) + p(text, { mb: 0 }) + '</div>' +
+  '</div>';
 
 const TIMELINE = `<a id="gmc-timeline"></a>` + section(
   opener('Sixty Years Above Eglinton', 'Still Swinging, Through Every Era') +
@@ -258,13 +260,14 @@ const TODAY = `<a id="gmc-today"></a>` + section(
   ], { gap: 32, basis: 230 }) + '</div>');
 
 const feeList = (title, items, titleColour, tick) =>
+  `<div style="border:1px solid ${LINE};padding:24px 24px 18px">` +
   `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
   `text-transform:uppercase;color:${titleColour};padding-bottom:12px;border-bottom:1px solid ${LINE};` +
   `margin:0 0 14px">${title}</div>` +
   items.map((i) =>
     `<div style="padding:8px 0;font-family:${SANS};font-size:17px;line-height:26px;color:${BODY}">` +
     `<span style="color:${tick === '+' ? RED : INK};font-weight:bold;margin-right:10px">${tick}</span>${i}</div>`
-  ).join('');
+  ).join('') + '</div>';
 
 const DOCTOR = `<a id="gmc-doctor"></a>` + section(
   opener('The Short Version', 'Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.') +
