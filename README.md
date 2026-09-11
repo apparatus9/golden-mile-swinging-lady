@@ -35,6 +35,41 @@ headline at y=922 (the one clean row between the type and her hair), background 
 between her arms, the ropes and the seat. It is encoded as 8-bit greyscale + alpha
 rather than RGBA — 251 KB instead of 748 KB, with no visible loss.
 
+## Pasting into WordPress / eDealer
+
+`node build-edealer.mjs` regenerates `edealer/` from `index.html`, so the standalone
+page and the CMS version can never drift.
+
+| File | Use |
+|---|---|
+| `edealer/legacy-edealer.html` | Paste this into a Custom HTML block. Style + markup in one. |
+| `edealer/legacy-edealer.wp.css` | The same CSS, if you'd rather put it in Appearance → Customise → Additional CSS. Then paste `legacy-edealer.nocss.html`. |
+| `edealer/legacy-edealer.nocss.html` | Markup only. |
+| `edealer/preview.html` | Local check: the paste rendered under a deliberately hostile theme. |
+
+What the build does, and why — every item here is a failure that was observed, not a guess:
+
+- **No `<script>`, no `<svg>`, no `<link>`.** The CMS strips all three (the team page
+  confirmed 0 of 60 `<svg>` survived). So the scroll-reveal, the mobile nav toggle and
+  the JSON-LD are dropped, and the font arrives by `@import` inside `<style>`.
+- **Nothing starts hidden.** The reveal rules parked sections at `opacity:0` until JS
+  added a class. With no JS those had to go, or the content would never appear. The
+  build fails if any `opacity:0` survives.
+- **Markup ships on one line.** `wpautop` turns a blank line into `<p>` and a lone
+  newline into `<br>`; the two hero buttons and the three link cards sat on their own
+  lines and would have been split apart. Newlines collapse to a space, never to nothing.
+- **Every class is `gmc-` prefixed and every rule scoped to `.gmc-legacy`**, so nothing
+  leaks either way. Generic names like `.nav`, `.btn`, `.head`, `.panel` would otherwise
+  collide with the theme.
+- **Our rules are emitted with the class doubled** (`.gmc-legacy.gmc-legacy`) for
+  specificity 0-2-x, and a `:where()` reset neutralises what the theme reaches in with.
+  Without these the theme's `p{}` set the body copy in Georgia and its `img{}` gave the
+  artwork a green circular border — both caught in `preview.html`.
+- **Images use absolute URLs**, since the CMS page is not served from this host.
+
+The host page supplies its own header, nav, footer and location bar, so the build
+removes ours rather than shipping a duplicate banner.
+
 ## Deploying
 
 ```
