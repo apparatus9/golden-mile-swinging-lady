@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Swinging Lady — Golden Mile Chrysler | A Toronto Landmark Since 1962</title>
+<meta name="description" content="Since 1962 a 40-foot illuminated Swinging Lady has watched over Eglinton Avenue East. The story of Toronto's most recognizable billboard and the dealership beneath it — Golden Mile Chrysler.">
+<meta property="og:title" content="The Swinging Lady — A Toronto Landmark Since 1962">
+<meta property="og:description" content="Sixty years above Eglinton Avenue East. The story of the Swinging Lady and Golden Mile Chrysler.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS — matched to goldenmilechrysler.ca ===== */
+:root{
+  --red:#ca0000;
+  --red-dark:#970000;
+  --black:#000;
+  --ink:#111;
+  --body:#3a3a3a;
+  --muted:#767676;
+  --line:#e2e2e2;
+  --grey:#f4f4f4;
+  --head:'Oswald','Arial Narrow',Helvetica,Arial,sans-serif;
+  --sans:Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:#fff;color:var(--body);
+  font-family:var(--sans);font-size:17px;line-height:27px;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+.wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
+.col{max-width:680px}
+.col.mid{margin-left:auto;margin-right:auto}
+
+h1,h2,h3{font-family:var(--head);font-weight:400;text-transform:uppercase;letter-spacing:1.1px;color:var(--ink);margin:0;line-height:1.1}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:500;letter-spacing:.5px}
+h2{font-size:clamp(1.9rem,3.6vw,2.8rem)}
+h3{font-size:clamp(1.1rem,1.8vw,1.3rem);font-weight:700;letter-spacing:1.4px}
+p{margin:0 0 22px}
+p:last-child{margin-bottom:0}
+strong{color:var(--ink)}
+.lede{font-size:20px;line-height:32px;color:var(--ink)}
+
+.eyebrow{
+  font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.6px;
+  text-transform:uppercase;color:var(--red);margin:0 0 16px;
+}
+.rule{width:44px;height:3px;background:var(--red);border:0;margin:20px 0 0}
+.head{text-align:center;max-width:720px;margin:0 auto 56px}
+.head .rule{margin-left:auto;margin-right:auto}
+.head p{margin:24px 0 0;color:var(--muted)}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--head);font-weight:500;font-size:15px;letter-spacing:1.2px;text-transform:uppercase;
+  padding:15px 32px;text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.btn-red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn-light:hover{background:#fff;color:var(--ink);border-color:#fff}
+
+/* ===== TOP BAR + HEADER ===== */
+.topbar{background:var(--black);color:#fff;font-size:14px;line-height:20px}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+.topbar a{color:#fff;text-decoration:none}
+.topbar a:hover{color:#ff5a5a}
+.topbar b{font-family:var(--head);font-weight:500;letter-spacing:.8px;text-transform:uppercase}
+
+.hdr{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:18px;padding-bottom:18px}
+.logo{text-decoration:none;display:block;line-height:1}
+.logo b{display:block;font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink)}
+.logo span{display:block;font-family:var(--head);font-weight:400;font-size:10px;letter-spacing:3.6px;text-transform:uppercase;color:var(--red);margin-top:4px}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{
+  font-family:var(--head);font-weight:400;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;transition:color .18s;
+}
+.nav a:hover{color:var(--red)}
+.navtoggle{display:none;background:none;border:1px solid var(--line);padding:10px 13px;cursor:pointer;font-size:15px;line-height:1}
+
+/* ===== HERO — just her, on black ===== */
+.hero{position:relative;background:var(--black);color:#fff;padding:96px 0 104px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.04fr .96fr;gap:48px;align-items:center}
+.hero h1{color:#fff}
+.hero .eyebrow{color:#fff;opacity:.55}
+.hero p{color:#c2c2c2;max-width:44ch;margin:28px 0 0;font-size:18px;line-height:30px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.herofig{position:relative;align-self:stretch;min-height:520px}
+.hang{position:absolute;top:-96px;bottom:0;left:0;right:0;display:flex;justify-content:center}
+.hang img{
+  height:100%;width:auto;max-width:none;
+  transform-origin:68.4% 0%;
+  animation:swing 5.6s cubic-bezier(.42,0,.58,1) infinite alternate;
+  animation-play-state:paused;
+}
+@keyframes swing{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
+.swinging{animation-play-state:running!important}
+
+/* ===== RED STRIP ===== */
+.strip{background:var(--red);color:#fff;text-align:center;padding:17px 24px}
+.strip p{margin:0;font-family:var(--head);font-weight:500;font-size:clamp(15px,1.9vw,19px);letter-spacing:1.4px;text-transform:uppercase}
+
+/* ===== SECTIONS ===== */
+.sec{padding:clamp(68px,8.5vw,112px) 0}
+.sec.grey{background:var(--grey)}
+.sec.black{background:var(--black);color:#c2c2c2}
+.sec.black h2,.sec.black h3{color:#fff}
+.sec.black .lede,.sec.black strong{color:#fff}
+.sec.black .eyebrow{color:#fff;opacity:.55}
+.sec.black .head p{color:#9a9a9a}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.split.top{align-items:start}
+
+/* ===== QUOTE ===== */
+.quote{
+  margin:44px 0 0;padding:0;border:0;
+  font-family:var(--head);font-weight:400;font-size:clamp(1.35rem,2.6vw,1.85rem);
+  line-height:1.32;color:var(--ink);letter-spacing:.3px;
+}
+.quote::before{content:"";display:block;width:44px;height:3px;background:var(--red);margin-bottom:24px}
+.sec.black .quote{color:#fff}
+
+/* ===== STATS ===== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #2a2a2a}
+.stat{text-align:center;padding:44px 18px;border-left:1px solid #2a2a2a}
+.stat:first-child{border-left:0}
+.stat b{display:block;font-family:var(--head);font-weight:400;font-size:clamp(2.3rem,4.6vw,3.4rem);color:#fff;line-height:1}
+.stat span{display:block;margin-top:14px;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.2px;text-transform:uppercase;color:var(--red)}
+
+/* ===== HER PANEL ===== */
+.panel{position:relative;width:100%;max-width:330px;margin:0;justify-self:end}
+.panel img{width:100%;height:auto}
+.panel figcaption{
+  border-top:1px solid var(--line);margin-top:26px;padding:18px 0 0;text-align:center;
+  font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);
+}
+
+/* ===== TIMELINE ===== */
+.timeline{max-width:720px;margin:0 auto}
+.tl{padding:34px 0;border-top:1px solid var(--line)}
+.tl:first-child{border-top:0;padding-top:0}
+.tl:last-child{padding-bottom:0}
+.tl .yr{display:block;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+.tl h3{margin-bottom:12px}
+.tl p{margin:0}
+.tl.hot .yr{color:var(--red)}
+.tl.hot h3{position:relative;padding-left:18px}
+.tl.hot h3::before{content:"";position:absolute;left:0;top:.36em;width:7px;height:7px;background:var(--red)}
+
+/* ===== CTA BAND ===== */
+.band{background:var(--black);color:#fff;text-align:center;padding:clamp(64px,8vw,96px) 0}
+.band h2{color:#fff}
+.band p{color:#9a9a9a;max-width:52ch;margin:22px auto 34px}
+.phone{
+  display:inline-flex;align-items:center;text-decoration:none;
+  font-family:var(--head);font-weight:500;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:1.6px;
+  color:#fff;background:var(--red);padding:14px 42px;transition:background .18s;
+}
+.phone:hover{background:var(--red-dark)}
+
+/* ===== TWO-COLUMN LISTS (fees) ===== */
+.fees{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:48px}
+.fees h3{font-size:12px;letter-spacing:2.4px;font-weight:500;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #2a2a2a}
+.fees .out h3{color:var(--red)}
+.fees ul{margin:0;padding:0;list-style:none}
+.fees li{padding:9px 0;font-size:17px}
+
+/* ===== RX LIST ===== */
+.rx{margin-top:8px;border-top:1px solid var(--line)}
+.rx div{display:flex;align-items:baseline;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}
+.rx b{font-family:var(--head);font-weight:500;font-size:14px;letter-spacing:1.6px;color:var(--red);min-width:76px}
+.rx span{font-size:17px}
+.rxnote{margin-top:26px;font-size:15px;color:var(--muted)}
+
+/* ===== LINK ROW ===== */
+.links{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:64px;padding-top:44px;border-top:1px solid var(--line)}
+.links a{display:block;text-decoration:none}
+.links b{display:block;font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.links span{display:block;font-size:16px;line-height:26px;color:var(--muted)}
+.links em{display:block;margin-top:14px;font-style:normal;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.links a:hover b{color:var(--red)}
+
+/* ===== FAQ ===== */
+.faq{max-width:760px;margin:0 auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:26px 46px 26px 0;position:relative;
+  font-family:var(--head);font-weight:500;font-size:clamp(17px,2vw,20px);letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--red)}
+.faq summary::after{
+  content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;
+  border-right:2px solid var(--red);border-bottom:2px solid var(--red);
+  transform:translateY(-70%) rotate(45deg);transition:transform .2s;
+}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq .ans{padding:0 8px 30px 0;font-size:17px}
+.faq .ans a{color:var(--red);font-weight:bold}
+
+.terms{max-width:760px;margin:44px auto 0}
+.terms summary{cursor:pointer;list-style:none;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);padding:6px 0}
+.terms summary::-webkit-details-marker{display:none}
+.terms summary:hover{color:var(--red)}
+.terms .b{padding-top:18px;font-size:14px;line-height:24px;color:var(--muted)}
+
+/* ===== FOOTER ===== */
+.locbar{background:var(--red);color:#fff;text-align:center;padding:17px 24px}
+.locbar p{margin:0;font-family:var(--head);font-weight:500;font-size:clamp(15px,1.9vw,19px);letter-spacing:1.4px;text-transform:uppercase}
+.locbar a{color:#fff;text-decoration:none}
+footer{background:var(--grey)}
+.fnav{display:flex;flex-wrap:wrap;gap:28px;padding:30px 0;border-bottom:1px solid var(--line)}
+.fnav a{font-family:var(--head);font-weight:500;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;color:var(--ink);text-decoration:none}
+.fnav a:hover{color:var(--red)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:24px 0 34px;font-size:14px;color:var(--muted)}
+
+/* ===== REVEAL ===== */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hang img,.panel .stage img{animation:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:1000px){
+  .hero{padding:64px 0 0}
+  .hero .wrap{grid-template-columns:1fr;gap:40px}
+  .herofig{min-height:430px}
+  .hang{top:0;position:relative;height:430px}
+  .hang img{height:430px}
+  .split{grid-template-columns:1fr;gap:44px}
+  .panel{max-width:300px;justify-self:center}
+  .links{grid-template-columns:1fr;gap:32px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid #2a2a2a}
+  .fees{grid-template-columns:1fr;gap:32px}
+  .nav{display:none}
+  .navtoggle{display:block}
+  .hdr{position:relative}
+  .hdr.open .nav{
+    display:flex;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;background:#fff;
+    border-bottom:1px solid var(--line);padding:0 28px 16px;
+  }
+  .hdr.open .nav a{padding:15px 0;border-top:1px solid var(--line)}
+}
+@media (max-width:640px){
+  body{font-size:16px;line-height:26px}
+  .wrap{padding:0 20px}
+  .stats{grid-template-columns:1fr}
+  .stat{border-left:0;border-top:1px solid #2a2a2a;padding:32px 18px}
+  .stat:first-child{border-top:0}
+  .topbar .wrap{font-size:13px;gap:6px}
+  .logo b{font-size:18px}
+  .btn{padding:13px 20px;font-size:14px}
+  .hang{height:340px}
+  .hang img{height:340px}
+  .herofig{min-height:340px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span><a href="https://maps.google.com/?q=1743+Eglinton+Avenue+East+Toronto+ON+M4A+1J8" target="_blank" rel="noopener">1743 Eglinton Ave E, Toronto ON M4A 1J8</a></span>
+    <span><b>Call The Car Doctor</b> &nbsp;<a href="tel:+14373715007">437-371-5007</a></span>
+  </div>
+</div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>Golden Mile Chrysler</b><span>Since 1962</span></a>
+    <nav class="nav" id="nav">
+      <a href="#landmark">The Landmark</a>
+      <a href="#seasons">Her Wardrobe</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#doctor">The Car Doctor</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a class="btn btn-red" href="tel:+14373715007">437-371-5007</a>
+      <button class="navtoggle" id="navtoggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Eglinton Avenue East &middot; Scarborough</p>
+      <h1>The Swinging Lady</h1>
+      <p>Toronto's iconic billboard — a 40-foot illuminated figure who has been gliding back and forth above Eglinton Avenue East since 1962, quietly inviting every passing driver to swing on by.</p>
+      <div class="cta">
+        <a class="btn btn-red" href="tel:+14373715007">Call 437-371-5007</a>
+        <a class="btn btn-light" href="#landmark">Read Her Story</a>
+      </div>
+    </div>
+    <div class="herofig">
+      <span class="hang">
+        <img class="swing" src="images/swinging-lady.png" width="543" height="979" fetchpriority="high" alt="The Swinging Lady — the 40-foot illuminated figure that has hung above Golden Mile Chrysler on Eglinton Avenue East since 1962">
+      </span>
+    </div>
+  </div>
+</section>
+
+<div class="strip"><p>Swinging over Eglinton Avenue East since 1962</p></div>
+
+<!-- ===== LANDMARK ===== -->
+<section class="sec" id="landmark">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The Landmark</p>
+      <h2>A 40-Foot Toronto Landmark</h2>
+      <hr class="rule">
+    </div>
+    <div class="col mid">
+      <p class="lede rv">Ask anyone who has driven Eglinton Avenue East through Scarborough and they will know exactly where Golden Mile Chrysler is — even if they have never set foot on the lot.</p>
+      <p class="rv">They know it because of the Swinging Lady. For more than sixty years, a 40-foot illuminated figure has perched on a swing above the dealership, gliding back and forth and quietly inviting passing drivers to “swing on by.”</p>
+      <p class="rv">She first went up in 1962, back when the dealership was Willison Chrysler. In the decades since, the name on the building has changed and the cars on the lot have changed, but the Swinging Lady has kept swinging — through Toronto winters, summer heat waves, and every era of the city that has grown up around her.</p>
+      <blockquote class="quote rv">She is not just decoration. She is a piece of Toronto and Scarborough car-culture history.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="sec black" style="padding:0">
+  <div class="wrap" style="padding:0">
+    <div class="stats">
+      <div class="stat"><b>1962</b><span>First Raised</span></div>
+      <div class="stat"><b>40 ft</b><span>Tall</span></div>
+      <div class="stat"><b>60+</b><span>Years Swinging</span></div>
+      <div class="stat"><b>1</b><span>Toronto Landmark</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEASONS ===== -->
+<section class="sec grey" id="seasons">
+  <div class="wrap">
+    <div class="split top">
+      <div>
+        <p class="eyebrow rv">Her Wardrobe</p>
+        <h2 class="rv">She Dresses for the Season</h2>
+        <hr class="rule rv">
+        <p class="lede rv" style="margin-top:32px">Part of the charm is that she pays attention to the weather.</p>
+        <p class="rv">In summer the Swinging Lady wears a bikini; when the snow arrives off Lake Ontario, she bundles up in a parka. Generations of GTA kids have watched for her seasonal wardrobe change from the back seat on the drive along Eglinton.</p>
+        <p class="rv">It is a small thing, and it is exactly why people remember her. A billboard that changes with the city feels less like advertising and more like a neighbour.</p>
+      </div>
+      <figure class="panel rv">
+        <img src="images/swinging-lady-bw.png" width="680" height="1367" loading="lazy" decoding="async" alt="Illustration of the Swinging Lady on her swing">
+        <figcaption>Above Eglinton Avenue East since 1962</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="sec" id="timeline">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Sixty Years Above Eglinton</p>
+      <h2>Still Swinging, Through Every Era</h2>
+      <hr class="rule">
+    </div>
+    <div class="timeline">
+      <div class="tl rv">
+        <span class="yr">1962</span>
+        <h3>She goes up over Willison Chrysler</h3>
+        <p>A 40-foot illuminated figure is raised above the lot on Eglinton Avenue East. The dealership is called Willison Chrysler. Cars still have fins. She starts swinging, and does not stop.</p>
+      </div>
+      <div class="tl rv">
+        <span class="yr">The 1970s &amp; 80s</span>
+        <h3>A drive-by ritual for the east end</h3>
+        <p>Bikini in July. Parka in January. Kids in the back seat learn to watch for her wardrobe change on the drive down Eglinton — the unofficial way Scarborough tells the seasons apart.</p>
+      </div>
+      <div class="tl hot rv">
+        <span class="yr">The 1980s</span>
+        <h3>She vanishes</h3>
+        <p>One day the swing is empty. The Swinging Lady briefly goes missing, sparking a small civic mystery before she is found and returned to her perch. If anything, the disappearance only cements her status as a beloved neighbourhood fixture — you do not miss a billboard unless it belongs to you.</p>
+      </div>
+      <div class="tl rv">
+        <span class="yr">Through the decades</span>
+        <h3>The name changes. She does not.</h3>
+        <p>Ownership changes hands, the lineup turns over, and the city grows up around her. The sign has been written up in the local press and is fondly remembered by anyone who grew up in the east end.</p>
+      </div>
+      <div class="tl rv">
+        <span class="yr">Today</span>
+        <h3>Golden Mile Chrysler, 1743 Eglinton Ave. East</h3>
+        <p>She watches over the lot near Bermondsey Road, now led by President Navin Kotecha — The Car Doctor — and the CDD6 campaign. Same swing. Same invitation. A very different way of selling cars underneath it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BAND ===== -->
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow" style="color:#fff;opacity:.55">Swing On By — Or Just Call The Doctor</p>
+    <h2>The Swinging Lady marks the spot.<br>The Car Doctor handles the rest.</h2>
+    <p>Sixty years of pointing drivers to this corner. Here is what is waiting underneath her now.</p>
+    <a class="phone" href="tel:+14373715007">437-371-5007</a>
+  </div>
+</section>
+
+<!-- ===== TODAY ===== -->
+<section class="sec" id="today">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Today</p>
+      <h2>Still Swinging at Golden Mile Chrysler</h2>
+      <hr class="rule">
+    </div>
+    <div class="col mid">
+      <p class="lede rv">Today the Swinging Lady watches over Golden Mile Chrysler at 1743 Eglinton Avenue East, near Bermondsey Road.</p>
+      <p class="rv">The dealership is now led by President <strong>Navin Kotecha — The Car Doctor</strong> — and runs the CDD6 campaign: transparent, all-in weekly lease pricing on new Chrysler, Dodge, Jeep, and RAM vehicles, with every dealer fee built into the number you see.</p>
+      <p class="rv">So the landmark that has invited drivers to “swing on by” since 1962 now points to something genuinely worth stopping for: honest pricing, no runaround, and a president who answers for every deal personally.</p>
+      <blockquote class="quote rv">Next time you spot her over Eglinton, you will know the story — and the deals waiting underneath.</blockquote>
+    </div>
+    <div class="links">
+      <a class="rv" href="#landmark"><b>About Golden Mile Chrysler</b><span>One of Toronto's longest-running Chrysler Dodge Jeep RAM dealerships — on Eglinton since 1962.</span><em>Since 1962 &rarr;</em></a>
+      <a class="rv" href="#doctor"><b>Meet The Car Doctor</b><span>How Navin Kotecha went from the shop floor to the front of the building — and why it changed the pricing.</span><em>Navin Kotecha &rarr;</em></a>
+      <a class="rv" href="https://cdd6.ca" target="_blank" rel="noopener"><b>This Month's CDD6 Deals</b><span>Six prescriptions. All-in weekly lease pricing. Published before you ever pick up the phone.</span><em>See the deals &rarr;</em></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE CAR DOCTOR ===== -->
+<section class="sec black" id="doctor">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The Short Version</p>
+      <h2>Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.</h2>
+      <hr class="rule">
+    </div>
+    <div class="col mid">
+      <p class="lede rv">Nav runs Golden Mile Chrysler. He thinks the way most dealerships sell cars is broken — too many hidden fees, too much back-and-forth, too much wasted time. So he built CDD6 to fix it.</p>
+      <p class="rv"><strong>CDD6 stands for Car Doctor Deals in the 6ix.</strong> Every month, Nav prescribes six lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles. Each one is tagged like a medical prescription — Rx #001 through Rx #006 — because the whole concept is built around one idea.</p>
+      <p class="rv">The weekly lease prices on CDD6 include everything the dealer controls. Freight, PDI, admin fees, OMVIC fee — all baked in. The only extras are HST and license plates, because those go to the government, not the dealership.</p>
+      <p class="rv">That is not a marketing gimmick. It is Ontario law under OMVIC. The difference is that Nav actually follows it to the letter and puts the real number on the website before you ever pick up the phone.</p>
+      <div class="fees rv">
+        <div>
+          <h3>Baked Into The Weekly Price</h3>
+          <ul><li>Freight</li><li>PDI</li><li>Admin fee</li><li>OMVIC fee</li><li>Air conditioning charge</li></ul>
+        </div>
+        <div class="out">
+          <h3>The Only Extras — Paid To Government</h3>
+          <ul><li>HST</li><li>License plates</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW NAV GOT HERE ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">The Background</p>
+      <h2>How Nav Got Here</h2>
+      <hr class="rule">
+      <p>He learned the business from the shop floor, not the showroom floor. That is the whole difference.</p>
+    </div>
+    <div class="col mid">
+      <p class="lede rv">Navin Kotecha did not grow up planning to run a car dealership. But the automotive industry found him early, and he stayed because he was good at it.</p>
+      <p class="rv">Nav built his career across some of Toronto's busiest dealership operations. He managed fixed operations — the service bays, the parts departments, the side of the business most customers never see but every dealer depends on. That is where you learn how a dealership actually works: not from the showroom floor, but from the shop floor. You learn what it costs to run the operation, what margins look like, where money gets wasted, and where customers get overcharged.</p>
+      <blockquote class="quote rv">He understands the cost structure of every deal because he spent years inside the machine before he sat at the front of it.</blockquote>
+      <p class="rv" style="margin-top:44px">When he tells you a price is all-in, he knows exactly what “all-in” means — down to the OMVIC fee and the air conditioning charge.</p>
+      <p class="rv">When the opportunity to lead Golden Mile Chrysler came along, Nav took it with a clear plan: strip the games out of the buying process and build something people could actually trust. Golden Mile had the location, the legacy, the Swinging Lady billboard that half of Toronto grew up driving past. What it needed was a new approach. Nav brought one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT CDD6 IS ===== -->
+<section class="sec grey">
+  <div class="wrap">
+    <div class="split top">
+      <div>
+        <p class="eyebrow rv">What CDD6 Actually Is</p>
+        <h2 class="rv">CDD6 Is Nav's Prescription Pad</h2>
+        <hr class="rule rv">
+        <p class="rv" style="margin-top:32px">CDD6 is not the dealership. Golden Mile Chrysler is the dealership.</p>
+        <p class="rv">Every month, Stellantis — the parent company behind Chrysler, Dodge, Jeep, and RAM — releases new OEM incentive programs. Factory rebates, subvented lease rates, loyalty bonuses. Most dealerships bury those programs in the fine print and use them to pad their own margins. Nav takes those programs and passes them through to the customer as aggressively as possible, then publishes the result on <a href="https://cdd6.ca" target="_blank" rel="noopener" style="color:var(--red);font-weight:bold">cdd6.ca</a>.</p>
+        <p class="rv">The six deals rotate monthly. When a new Stellantis program drops, Nav recalculates, picks the six strongest prescriptions, and publishes them. Old deal pages redirect to the permanent model pages, so you always see what is current, never what expired last month.</p>
+        <p class="rv">Each deal shows the weekly lease payment, the cash down, the term, the rate, the kilometre allowance, and the complete due-on-delivery breakdown. Everything. On the page. Before you call.</p>
+      </div>
+      <div class="rv">
+        <h3 style="font-size:12px;letter-spacing:2.4px;font-weight:500;color:var(--red)">This Month's Six</h3>
+        <div class="rx">
+          <div><b>Rx #001</b><span>Chrysler</span></div>
+          <div><b>Rx #002</b><span>Dodge</span></div>
+          <div><b>Rx #003</b><span>Jeep</span></div>
+          <div><b>Rx #004</b><span>RAM</span></div>
+          <div><b>Rx #005</b><span>Dealer's choice</span></div>
+          <div><b>Rx #006</b><span>Door-crasher</span></div>
+        </div>
+        <p class="rxnote">Six prescriptions, refilled every month against the latest Stellantis programs. Weekly lease pricing, all dealer fees included.</p>
+        <a class="btn btn-line" href="https://cdd6.ca" target="_blank" rel="noopener" style="margin-top:26px">Fill at cdd6.ca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY PRESCRIPTIONS ===== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Why “Prescriptions”?</p>
+      <h2>The Metaphor Is Not An Accident</h2>
+      <hr class="rule">
+    </div>
+    <div class="col mid">
+      <p class="lede rv">Nav calls himself The Car Doctor because the problem he is solving feels like a diagnosis.</p>
+      <p class="rv"><strong style="color:var(--red)">The symptoms:</strong> you search for a car deal online, you find a price that looks good, you drive to the dealership, you sit down, and the number changes. Freight gets added. An admin fee appears. PDI was not included. Suddenly the deal you saw online is hundreds more per month than what you budgeted. That is the disease.</p>
+      <p class="rv"><strong style="color:var(--red)">The prescription:</strong> publish the real, all-in price before the customer walks in. Include every fee the dealer controls. Make the weekly payment the actual weekly payment — plus government taxes and plates, and nothing else. No negotiation required.</p>
+      <blockquote class="quote rv">CDD6 deals are labelled Rx #001 through Rx #006 because they are meant to be filled, not haggled over.</blockquote>
+      <p class="rv" style="margin-top:44px">You see the prescription. You call the number. The price on the phone is the price on the page. That is how it works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sec grey" id="faq">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">About The Car Doctor</p>
+      <h2>Frequently Asked Questions</h2>
+      <hr class="rule">
+    </div>
+
+    <div class="faq rv">
+      <details open>
+        <summary>Who is The Car Doctor?</summary>
+        <div class="ans"><p>The Car Doctor is Navin Kotecha — Nav — President of Golden Mile Chrysler at 1743 Eglinton Avenue East in Toronto. Nav created the CDD6 campaign (Car Doctor Deals in the 6ix), which prescribes monthly door-crasher lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles with fully transparent, all-in weekly pricing. Call his team at <a href="tel:+14373715007">437-371-5007</a>.</p></div>
+      </details>
+      <details>
+        <summary>Who is Navin Kotecha?</summary>
+        <div class="ans"><p>Navin Kotecha is the President of Golden Mile Chrysler, one of Toronto's longest-running Chrysler Dodge Jeep RAM dealerships. Known as The Car Doctor, Nav built his career across multiple major dealership groups in Toronto before taking the helm at Golden Mile. He launched the CDD6 campaign to bring transparent, OMVIC-compliant lease deals directly to Toronto drivers without the typical dealership runaround.</p></div>
+      </details>
+      <details>
+        <summary>What does The Car Doctor prescribe?</summary>
+        <div class="ans"><p>The Car Doctor prescribes six monthly lease deals — tagged Rx #001 through Rx #006 — on new Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler. Each prescription features aggressive weekly lease pricing that includes all dealer fees (freight, PDI, admin, OMVIC). Only HST and licensing are extra. The deals rotate monthly based on Stellantis OEM incentive programs.</p></div>
+      </details>
+      <details>
+        <summary>How do I contact The Car Doctor?</summary>
+        <div class="ans"><p>Call The Car Doctor's team directly at <a href="tel:+14373715007">437-371-5007</a>. Golden Mile Chrysler is located at 1743 Eglinton Avenue East, Toronto, ON M4A 1J8 — the dealership with the iconic Swinging Lady billboard. No appointment necessary. Nav's team handles everything from first call to delivery.</p></div>
+      </details>
+      <details>
+        <summary>Where is the Swinging Lady billboard?</summary>
+        <div class="ans"><p>She has been above Golden Mile Chrysler at 1743 Eglinton Avenue East, near Bermondsey Road in Toronto, since 1962 — first raised when the dealership traded as Willison Chrysler. She is visible to eastbound and westbound traffic along Eglinton, and she still changes outfits with the season.</p></div>
+      </details>
+    </div>
+
+    <details class="terms rv">
+      <summary>View Full Terms &#9662;</summary>
+      <div class="b">
+        <p>All CDD6 weekly lease prices include every fee the dealer controls — freight, PDI, administration, air conditioning charge, and the OMVIC fee — in accordance with Ontario's all-in price advertising requirements under the <em>Motor Vehicle Dealers Act</em> as administered by OMVIC. HST and license plate fees are extra, as they are payable to the government and not to the dealership.</p>
+        <p>Lease offers are based on current Stellantis Canada OEM incentive programs and are subject to change without notice when those programs change. Advertised payments assume the stated term, cash down, annual kilometre allowance, and lease rate shown on the individual deal page at cdd6.ca. Additional kilometres, excess wear and tear, and optional equipment are extra. Offers apply to new, in-stock Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler, 1743 Eglinton Avenue East, Toronto, ON M4A 1J8, and are subject to credit approval and availability. Vehicle images and descriptions are for illustration only. See dealer for complete details.</p>
+        <p>Historical details regarding the Swinging Lady sign, including its 1962 installation above Willison Chrysler and its temporary disappearance in the 1980s, are recounted from local press coverage and long-standing community recollection.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="locbar">
+  <p>We are conveniently located at <a href="https://maps.google.com/?q=1743+Eglinton+Avenue+East+Toronto+ON+M4A+1J8" target="_blank" rel="noopener">1743 Eglinton Ave E, Toronto ON M4A 1J8</a></p>
+</div>
+
+<footer>
+  <div class="wrap">
+    <nav class="fnav">
+      <a href="#top">Home</a>
+      <a href="#landmark">The Swinging Lady</a>
+      <a href="#timeline">Our History</a>
+      <a href="#doctor">The Car Doctor</a>
+      <a href="https://cdd6.ca" target="_blank" rel="noopener">CDD6 Deals</a>
+      <a href="#faq">FAQ &amp; Terms</a>
+      <a href="tel:+14373715007">437-371-5007</a>
+    </nav>
+    <div class="fbot">
+      <span>Copyright &copy; <span id="yr"></span> Golden Mile Chrysler. All Rights Reserved.</span>
+      <span>Swinging over Eglinton since 1962.</span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"AutoDealer",
+      "@id":"https://www.goldenmilechrysler.ca/#dealer",
+      "name":"Golden Mile Chrysler",
+      "description":"Toronto Chrysler Dodge Jeep RAM dealership on Eglinton Avenue East since 1962, home of the iconic Swinging Lady billboard and the CDD6 all-in transparent lease pricing campaign.",
+      "telephone":"+1-437-371-5007",
+      "foundingDate":"1962",
+      "address":{"@type":"PostalAddress","streetAddress":"1743 Eglinton Avenue East","addressLocality":"Toronto","addressRegion":"ON","postalCode":"M4A 1J8","addressCountry":"CA"},
+      "employee":{"@type":"Person","name":"Navin Kotecha","jobTitle":"President","alternateName":"The Car Doctor"},
+      "brand":["Chrysler","Dodge","Jeep","RAM"]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"Who is The Car Doctor?","acceptedAnswer":{"@type":"Answer","text":"The Car Doctor is Navin Kotecha — Nav — President of Golden Mile Chrysler at 1743 Eglinton Avenue East in Toronto. Nav created the CDD6 campaign (Car Doctor Deals in the 6ix), which prescribes monthly door-crasher lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles with fully transparent, all-in weekly pricing. Call his team at 437-371-5007."}},
+        {"@type":"Question","name":"Who is Navin Kotecha?","acceptedAnswer":{"@type":"Answer","text":"Navin Kotecha is the President of Golden Mile Chrysler, one of Toronto's longest-running Chrysler Dodge Jeep RAM dealerships. Known as The Car Doctor, Nav built his career across multiple major dealership groups in Toronto before taking the helm at Golden Mile. He launched the CDD6 campaign to bring transparent, OMVIC-compliant lease deals directly to Toronto drivers without the typical dealership runaround."}},
+        {"@type":"Question","name":"What does The Car Doctor prescribe?","acceptedAnswer":{"@type":"Answer","text":"The Car Doctor prescribes six monthly lease deals — tagged Rx #001 through Rx #006 — on new Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler. Each prescription features aggressive weekly lease pricing that includes all dealer fees (freight, PDI, admin, OMVIC). Only HST and licensing are extra. The deals rotate monthly based on Stellantis OEM incentive programs."}},
+        {"@type":"Question","name":"How do I contact The Car Doctor?","acceptedAnswer":{"@type":"Answer","text":"Call The Car Doctor's team directly at 437-371-5007. Golden Mile Chrysler is located at 1743 Eglinton Avenue East, Toronto, ON M4A 1J8 — the dealership with the iconic Swinging Lady billboard. No appointment necessary. Nav's team handles everything from first call to delivery."}}
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var hdr = document.getElementById('hdr'), tgl = document.getElementById('navtoggle');
+  tgl.addEventListener('click', function(){
+    var open = hdr.classList.toggle('open');
+    tgl.setAttribute('aria-expanded', open ? 'true' : 'false');
+    tgl.innerHTML = open ? '&#10005;' : '&#9776;';
+  });
+  document.getElementById('nav').addEventListener('click', function(e){
+    if (e.target.tagName === 'A'){
+      hdr.classList.remove('open');
+      tgl.innerHTML = '&#9776;';
+      tgl.setAttribute('aria-expanded','false');
+    }
+  });
+
+  /* only swing while she is actually on screen */
+  var swings = document.querySelectorAll('.swing');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var so = new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.target.classList.toggle('swinging', e.isIntersecting); });
+    }, {rootMargin:'80px'});
+    for (var i = 0; i < swings.length; i++) so.observe(swings[i]);
+  } else if (!reduce) {
+    for (var i2 = 0; i2 < swings.length; i2++) swings[i2].classList.add('swinging');
+  }
+
+  var items = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)){
+    for (var k = 0; k < items.length; k++) items[k].classList.add('on');
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('on'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -6% 0px', threshold:0.1});
+    for (var m = 0; m < items.length; m++) io.observe(items[m]);
+  }
+})();
+</script>
+</body>
+</html>
