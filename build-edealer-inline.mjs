@@ -37,11 +37,11 @@ const eyebrow = (t, c = RED) =>
   `letter-spacing:2.6px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(2.2rem,5.5vw,4rem);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(1.9rem,7cqw,3.3rem);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:#fff">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
-  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,3.4vw,2.4rem);` +
+  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.5rem,4.4cqw,2.2rem);` +
   `line-height:1.12;text-transform:uppercase;letter-spacing:1.1px;color:${c}">${t}</h2>`;
 
 const h3 = (t, c = INK) =>
@@ -55,7 +55,7 @@ const rule = (align) =>
 const quote = (t, c = INK) =>
   `<div style="margin:36px 0 0">` +
   `<div style="width:44px;height:3px;background:${RED};margin:0 0 20px"></div>` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.25rem,2.4vw,1.7rem);` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.2rem,3cqw,1.6rem);` +
   `line-height:1.32;letter-spacing:.3px;color:${c}">${t}</div></div>`;
 
 const btn = (href, label, kind) => {
@@ -74,9 +74,11 @@ const btn = (href, label, kind) => {
 
 // flex-wrap + flex-basis stands in for the media queries: the columns sit side by side
 // when the content column is wide enough and stack by themselves when it is not
-const row = (kids, { gap = 44, basis = 320, align = 'flex-start' } = {}) =>
+// A child may carry its own weight: the hero's text needs more room than the picture.
+const row = (kids, { gap = 44, basis = 320, align = 'flex-start', weights = [] } = {}) =>
   `<div style="display:flex;flex-wrap:wrap;gap:${gap}px;align-items:${align}">` +
-  kids.map((k) => `<div style="flex:1 1 ${basis}px;min-width:0">${k}</div>`).join('') + '</div>';
+  kids.map((k, i) => `<div style="flex:${weights[i] ?? 1} 1 ${basis}px;min-width:0">${k}</div>`).join('') +
+  '</div>';
 
 const section = (inner, { bg = '#fff', pad = 64 } = {}) =>
   `<section style="background:${bg};padding:${pad}px 0"><div style="max-width:1100px;` +
@@ -102,11 +104,11 @@ const HERO = section(
     `<div style="text-align:center">` +
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
           'max-width:300px;width:100%;height:auto;margin:0 auto') + '</div>',
-  ], { basis: 300, align: 'center' }),
+  ], { basis: 280, align: 'center', weights: [1.5, 1] }),
   { bg: '#000', pad: 56 });
 
 const STRIP = `<div style="background:${RED};padding:16px 22px;text-align:center">` +
-  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(14px,1.8vw,18px);` +
+  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(13px,2cqw,17px);` +
   `letter-spacing:1.4px;text-transform:uppercase;color:#fff">Swinging over Eglinton Avenue East since 1962</div></div>`;
 
 const LANDMARK = `<a id="gmc-landmark"></a>` + section(
@@ -125,7 +127,7 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
 
 const stat = (n, label) =>
   `<div style="text-align:center;padding:30px 12px">` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(2rem,4vw,3rem);line-height:1;color:#fff">${n}</div>` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.8rem,5cqw,2.8rem);line-height:1;color:#fff">${n}</div>` +
   `<div style="margin-top:12px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
@@ -190,7 +192,7 @@ const band = (eb, head, sub) =>
   `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb, '#9a9a9a') + h2(head, '#fff') +
   `<div style="margin:20px 0 28px">${p(sub, { c: '#9a9a9a', mb: 0 })}</div>` +
   `<a href="tel:+14373715007" style="display:inline-block;font-family:${HEAD};font-weight:500;` +
-  `font-size:clamp(1.5rem,3.6vw,2.3rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
+  `font-size:clamp(1.4rem,4.6cqw,2.2rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
   `padding:13px 38px;text-decoration:none">437-371-5007</a></div></section>`;
 
 const link = (href, title, text, cue, ext) =>
@@ -396,6 +398,12 @@ const page = [HERO, STRIP, LANDMARK, STATS, SEASONS, TIMELINE,
        'No games. No runaround. Just the real price.'),
   FAQ].join('').replace(/\n\s*/g, '');
 
+// One wrapper declaring an inline-size container, so the cqw units above measure the
+// content cell — 944px here, a Foundation `cell large-8` beside the sidebar — instead
+// of the 1707px window. Sized in vw, every heading was scaled for a page three-quarters
+// wider than the column it actually sits in.
+const wrapped = '<div style="container-type:inline-size">' + page + '</div>';
+
 // An inline style loses to a theme rule carrying !important — and the failure mode is
 // severe: the hostile-theme test knocked the black off the hero and left white text on
 // a pale ground, unreadable. Inline + !important is the highest priority there is, so
@@ -406,16 +414,16 @@ const armour = (s) => s.replace(/style="([^"]*)"/g, (m, decls) =>
     return /^(background|background-color|color|border-color)$/.test(prop) ? d + ' !important' : d;
   }).join(';') + '"');
 
-await writeFile('edealer/legacy-inline.html', armour(page) + '\n');
+await writeFile('edealer/legacy-inline.html', armour(wrapped) + '\n');
 
 // ---- checks ------------------------------------------------------------------
-for (const bad of [/<style/i, /<script/i, /<svg/i, /<link/i, /<!DOCTYPE/i, /<html[\s>]/i]) {
-  if (bad.test(page)) throw new Error('tag the CMS strips is present: ' + bad);
+for (const bad of [/<vw/i, /<style/i, /<script/i, /<svg/i, /<link/i, /<!DOCTYPE/i, /<html[\s>]/i]) {
+  if (bad.test(wrapped)) throw new Error('tag the CMS strips is present: ' + bad);
 }
 if (/\n/.test(page)) throw new Error('newline left for wpautop to turn into <br>');
-if (/class=/.test(page)) throw new Error('a class remains — nothing may depend on a stylesheet');
-if (/--[a-z]/.test(page)) throw new Error('a CSS custom property remains; wptexturize turns -- into an en-dash');
+if (/class=/.test(wrapped)) throw new Error('a class remains — nothing may depend on a stylesheet');
+if (/--[a-z]/.test(wrapped)) throw new Error('a CSS custom property remains; wptexturize turns -- into an en-dash');
 if (/var\(/.test(page)) throw new Error('var() remains but no stylesheet defines it');
-const tags = page.match(/<(\w+)(?=[\s>])/g).length, styled = page.match(/style="/g).length;
-console.log('one line, ' + (page.length / 1024).toFixed(1) + ' KB, ' + tags + ' tags, ' + styled + ' inline styles');
+const tags = wrapped.match(/<(\w+)(?=[\s>])/g).length, styled = wrapped.match(/style="/g).length;
+console.log('one line, ' + (wrapped.length / 1024).toFixed(1) + ' KB, ' + tags + ' tags, ' + styled + ' inline styles');
 console.log('checks: no style/script/svg/link tag, no newline, no class, no custom property  OK');
