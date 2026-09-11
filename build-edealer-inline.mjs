@@ -125,16 +125,18 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
       'around her.', { mb: 0 }) +
     quote('She is not just decoration. She is a piece of Toronto and Scarborough car-culture history.')));
 
+// Ruled strip rather than a black block: inside a content column a dark panel reads as
+// a floating rectangle, not as the full-bleed band it is on the standalone page.
 const stat = (n, label) =>
-  `<div style="text-align:center;padding:30px 12px">` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.2cqw,2.4rem);line-height:1;color:#fff">${n}</div>` +
-  `<div style="margin-top:12px;font-family:${HEAD};font-weight:500;font-size:12px;` +
+  `<div style="text-align:center;padding:26px 12px">` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.2cqw,2.4rem);line-height:1;color:${INK}">${n}</div>` +
+  `<div style="margin-top:10px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
-const STATS = `<div style="background:#000;border-top:1px solid ${DARKLINE}">` +
-  `<div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap">` +
+const STATS = `<div style="background:#fff;border-top:2px solid ${INK};border-bottom:1px solid ${LINE}">` +
+  `<div style="max-width:1100px;margin:0 auto;padding:0 22px;display:flex;flex-wrap:wrap">` +
   [['1962', 'First Raised'], ['40 ft', 'Tall'], ['60+', 'Years Swinging'], ['1', 'Toronto Landmark']]
-    .map(([n, l], i) => `<div style="flex:1 1 150px;${i ? `border-left:1px solid ${DARKLINE}` : ''}">${stat(n, l)}</div>`)
+    .map(([n, l], i) => `<div style="flex:1 1 150px;${i ? `border-left:1px solid ${LINE}` : ''}">${stat(n, l)}</div>`)
     .join('') + '</div></div>';
 
 const SEASONS = section(
@@ -187,10 +189,12 @@ const TIMELINE = `<a id="gmc-timeline"></a>` + section(
      'and the CDD6 campaign. Same swing. Same invitation. A very different way of selling cars underneath it.') +
   '</div>');
 
+// The call-to-action carries its weight through the red button, not a black ground.
 const band = (eb, head, sub) =>
-  `<section style="background:#000;padding:64px 22px;text-align:center">` +
-  `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb, '#9a9a9a') + h2(head, '#fff') +
-  `<div style="margin:20px 0 28px">${p(sub, { c: '#9a9a9a', mb: 0 })}</div>` +
+  `<section style="background:${GREY};padding:56px 22px;text-align:center;` +
+  `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
+  `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb) + h2(head) +
+  `<div style="margin:20px 0 28px">${p(sub, { c: MUTED, mb: 0 })}</div>` +
   `<a href="tel:+14373715007" style="display:inline-block;font-family:${HEAD};font-weight:500;` +
   `font-size:clamp(1.25rem,3.6cqw,1.9rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
   `padding:13px 38px;text-decoration:none">437-371-5007</a></div></section>`;
@@ -230,36 +234,36 @@ const TODAY = `<a id="gmc-today"></a>` + section(
 
 const feeList = (title, items, titleColour, tick) =>
   `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
-  `text-transform:uppercase;color:${titleColour};padding-bottom:12px;border-bottom:1px solid ${DARKLINE};` +
+  `text-transform:uppercase;color:${titleColour};padding-bottom:12px;border-bottom:1px solid ${LINE};` +
   `margin:0 0 14px">${title}</div>` +
   items.map((i) =>
-    `<div style="padding:8px 0;font-family:${SANS};font-size:17px;line-height:26px;color:${DIM}">` +
-    `<span style="color:${tick === '+' ? RED : '#fff'};font-weight:bold;margin-right:10px">${tick}</span>${i}</div>`
+    `<div style="padding:8px 0;font-family:${SANS};font-size:17px;line-height:26px;color:${BODY}">` +
+    `<span style="color:${tick === '+' ? RED : INK};font-weight:bold;margin-right:10px">${tick}</span>${i}</div>`
   ).join('');
 
 const DOCTOR = `<a id="gmc-doctor"></a>` + section(
-  centred(eyebrow('The Short Version', '#9a9a9a') +
-          h2('Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.', '#fff') + rule('center')) +
+  centred(eyebrow('The Short Version') +
+          h2('Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.') + rule('center')) +
   col(
     lede('Nav runs Golden Mile Chrysler. He thinks the way most dealerships sell cars is broken — too many ' +
-         'hidden fees, too much back-and-forth, too much wasted time. So he built CDD6 to fix it.', '#fff') +
-    p('<strong style="color:#fff">CDD6 stands for Car Doctor Deals in the 6ix.</strong> Every month, Nav ' +
+         'hidden fees, too much back-and-forth, too much wasted time. So he built CDD6 to fix it.') +
+    p('<strong style="color:'+INK+'">CDD6 stands for Car Doctor Deals in the 6ix.</strong> Every month, Nav ' +
       'prescribes six lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles. Each one is tagged like a ' +
       'medical prescription — Rx #001 through Rx #006 — because the whole concept is built around one idea.',
-      { c: DIM }) +
+      { c: BODY }) +
     p('The weekly lease prices on CDD6 include everything the dealer controls. Freight, PDI, admin fees, ' +
       'OMVIC fee — all baked in. The only extras are HST and license plates, because those go to the ' +
       'government, not the dealership.', { c: DIM }) +
     p('That is not a marketing gimmick. It is Ontario law under OMVIC. The difference is that Nav actually ' +
       'follows it to the letter and puts the real number on the website before you ever pick up the phone.',
-      { c: DIM, mb: 0 }) +
+      { c: BODY, mb: 0 }) +
     `<div style="margin-top:36px">` +
     row([
       feeList('Baked Into The Weekly Price',
-              ['Freight', 'PDI', 'Admin fee', 'OMVIC fee', 'Air conditioning charge'], '#fff', '&#10003;'),
+              ['Freight', 'PDI', 'Admin fee', 'OMVIC fee', 'Air conditioning charge'], INK, '&#10003;'),
       feeList('The Only Extras — Paid To Government', ['HST', 'License plates'], RED, '+'),
     ], { gap: 36, basis: 240 }) + '</div>'),
-  { bg: '#000' });
+  { bg: GREY });
 
 const BACKGROUND = section(
   centred(eyebrow('The Background') + h2('How Nav Got Here') + rule('center') +
