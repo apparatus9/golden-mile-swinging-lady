@@ -200,7 +200,7 @@ const TIMELINE = `<a id="gmc-timeline"></a>` + section(
      'Ownership changes hands, the lineup turns over, and the city grows up around her. The sign has been ' +
      'written up in the local press and is fondly remembered by anyone who grew up in the east end.') +
   tl('Today', 'Golden Mile Chrysler, 1743 Eglinton Ave. East',
-     'She watches over the lot near Bermondsey Road, now led by President Navin Kotecha — The Car Doctor — ' +
+     'She watches over the lot near Bermondsey Road, now led by President Navin Kotecha, The Car Doctor. ' +
      'Same swing. Same invitation. A very different way of selling cars underneath it.') +
   '</div>');
 
@@ -269,7 +269,7 @@ const DOCTOR = `<a id="gmc-doctor"></a>` + section(
       { c: BODY, mb: 0 }) +
     `<div style="margin-top:36px">` +
     row([
-      feeList('Baked Into The Weekly Price',
+      feeList('Baked Into The Price',
               ['Freight', 'PDI', 'Admin fee', 'OMVIC fee', 'Air conditioning charge'], INK, '&#10003;'),
       feeList('The Only Extras — Paid To Government', ['HST', 'License plates'], RED, '+'),
     ], { gap: 36, basis: 240 }) + '</div>'),
