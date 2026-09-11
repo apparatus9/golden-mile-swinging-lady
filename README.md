@@ -37,7 +37,20 @@ rather than RGBA — 251 KB instead of 748 KB, with no visible loss.
 
 ## Pasting into WordPress / eDealer
 
-**Use .** One paste, into the code box.
+**Use `edealer/legacy-inline.html`.** One paste, into the code box.
+
+Two WordPress settings matter as much as the markup. Both were found by measuring the
+live page, after several rounds of guessing at them:
+
+1. **Page Attributes → Template must be `Full Page`.** On `Default template` the content
+   renders into a 944px Foundation `cell large-8` beside the Contact/Hours sidebar,
+   which is what made the page look cramped and clipped.
+2. **`edealer/additional-css.css` goes in Appearance → Customize → Additional CSS.**
+   Three rules, and all they do is swing the hero figure — `@keyframes` has no inline
+   form, so it is the one piece that cannot live in the code box. It matches
+   `img[src*="swinging-lady.png"]`, so that single hero image is the only element on the
+   whole site it can affect; the wardrobe illustration is `swinging-lady-bw.png` and
+   does not match.
 
 Two WordPress settings matter as much as the markup, both found by measuring the live
 page rather than guessing:
