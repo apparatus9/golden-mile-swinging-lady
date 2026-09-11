@@ -37,11 +37,11 @@ const eyebrow = (t, c = RED) =>
   `letter-spacing:3px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(2.6rem,11cqw,6rem);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(38px,7.2cqw,80px);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:${INK}">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
-  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,5cqw,2.6rem);` +
+  `<h2 style="margin:0;font-family:${HEAD};font-weight:400;font-size:clamp(26px,3.6cqw,42px);` +
   `line-height:1.12;text-transform:uppercase;letter-spacing:1.1px;color:${c}">${t}</h2>`;
 
 const h3 = (t, c = INK) =>
@@ -55,7 +55,7 @@ const rule = (align) =>
 const quote = (t, c = INK) =>
   `<div style="margin:52px 0 0;text-align:center">` +
   `<div style="width:56px;height:4px;background:${RED};margin:0 auto 26px"></div>` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.6cqw,2.6rem);` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(22px,3cqw,34px);` +
   `line-height:1.24;letter-spacing:.2px;color:${c}">${t}</div></div>`;
 
 const btn = (href, label, kind) => {
@@ -136,7 +136,7 @@ const HERO = section(
 
 const STRIP = `<div style="background:transparent;padding:18px 22px;text-align:center;` +
   `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
-  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(12px,1.7cqw,16px);` +
+  `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(12px,1.3cqw,15px);` +
   `letter-spacing:1.4px;text-transform:uppercase;color:${RED}">Swinging over Eglinton Avenue East since 1962</div></div>`;
 
 const LANDMARK = `<a id="gmc-landmark"></a>` + section(
@@ -158,7 +158,7 @@ const LANDMARK = `<a id="gmc-landmark"></a>` + section(
 // a floating rectangle, not as the full-bleed band it is on the standalone page.
 const stat = (n, label) =>
   `<div style="text-align:center;padding:26px 12px">` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(2.4rem,7.5cqw,4.2rem);line-height:1;color:${INK}">${n}</div>` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(34px,4.8cqw,56px);line-height:1;color:${INK}">${n}</div>` +
   `<div style="margin-top:10px;font-family:${HEAD};font-weight:500;font-size:12px;` +
   `letter-spacing:2.2px;text-transform:uppercase;color:${RED}">${label}</div></div>`;
 
@@ -191,7 +191,7 @@ const SEASONS = section(
 const tl = (yr, head, text, hot) =>
   `<div style="display:flex;flex-wrap:wrap">` +
     `<div style="flex:0 0 190px;text-align:right;padding:34px 30px 0 0">` +
-      `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(1.15rem,2.4cqw,1.6rem);` +
+      `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(17px,1.8cqw,23px);` +
       `line-height:1.05;letter-spacing:.5px;text-transform:uppercase;color:${hot ? RED : INK}">${yr}</div>` +
     '</div>' +
     `<div style="flex:1 1 300px;min-width:0;position:relative;border-left:1px solid ${LINE};` +
@@ -230,7 +230,7 @@ const band = (eb, head, sub) =>
   `<div style="max-width:820px;margin:0 auto">` + eyebrow(eb) + h2(head) +
   `<div style="margin:20px 0 28px">${p(sub, { c: MUTED, mb: 0 })}</div>` +
   `<a href="tel:+14373715007" style="display:inline-block;font-family:${HEAD};font-weight:500;` +
-  `font-size:clamp(1.7rem,5cqw,2.7rem);letter-spacing:1.6px;color:#fff;background:${RED};` +
+  `font-size:clamp(24px,3.2cqw,40px);letter-spacing:1.6px;color:#fff;background:${RED};` +
   `padding:13px 38px;text-decoration:none">437-371-5007</a></div></section>`;
 
 const link = (href, title, text, cue, ext) =>
@@ -379,7 +379,7 @@ const page = [HERO, STRIP, LANDMARK, STATS, SEASONS, TIMELINE,
 // content cell — 944px here, a Foundation `cell large-8` beside the sidebar — instead
 // of the 1707px window. Sized in vw, every heading was scaled for a page three-quarters
 // wider than the column it actually sits in.
-const wrapped = '<div style="container-type:inline-size">' + page + '</div>';
+const wrapped = '<div style="container-type:inline-size;max-width:1180px;margin:0 auto">' + page + '</div>';
 
 // An inline style loses to a theme rule carrying !important — and the failure mode is
 // severe: the hostile-theme test knocked the black off the hero and left white text on
