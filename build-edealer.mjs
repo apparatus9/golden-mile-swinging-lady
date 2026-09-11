@@ -80,11 +80,29 @@ function scopeBlock(text) {
       j++;
     }
     const body = text.slice(at + 1, j - 1);
-    if (/^@(media|supports)/.test(sel)) out += sel + '{' + scopeBlock(body) + '}\n';
+    if (/^@(media|supports)/.test(sel)) {
+      const inner = scopeBlock(body);
+      // Width breakpoints become CONTAINER queries: eDealer drops this into a content
+      // column beside the Contact/Hours sidebar (~900px on a 1700px screen), so a
+      // viewport query would never fire and the two-column sections would sit squeezed.
+      // A rule styling the wrapper element itself can't be a container query — an
+      // element cannot query its own container — so those stay behind @media.
+      const w = sel.match(/^@media \(max-width:(\d+)px\)$/);
+      if (w) {
+        const self = [], kids = [];
+        for (const line of inner.split('\n').filter(Boolean)) {
+          (line.startsWith(ROOT + '{') ? self : kids).push(line);
+        }
+        if (kids.length) out += '@container gmclegacy (max-width:' + w[1] + 'px){\n' + kids.join('\n') + '\n}\n';
+        if (self.length) out += '@media (max-width:' + w[1] + 'px){\n' + self.join('\n') + '\n}\n';
+      } else out += sel + '{' + inner + '}\n';   // prefers-reduced-motion and friends
+    }
     else if (/^@/.test(sel)) out += sel + '{' + body + '}\n';   // keyframes etc: leave alone
     else {
       const sc = scopeSelector(sel);
-      if (sc) out += sc + '{' + body.trim() + '}\n';
+      // one rule per line, so the media/container split above can work line by line;
+      // newlines collapse to a space so no value is ever run together
+      if (sc) out += sc + '{' + body.trim().replace(/\s*\n\s*/g, ' ') + '}\n';
     }
     i = j;
   }
@@ -93,6 +111,8 @@ function scopeBlock(text) {
 
 css = css.replace(/:root\{/g, ROOT + '{');       // tokens live on the wrapper
 css = scopeBlock(css);
+
+css = css.replace(ROOT + '{', ROOT + '{container:gmclegacy / inline-size;');
 // The scroll-reveal rules parked content at opacity:0 until JS added .on. There is no
 // JS here, so every one of them has to go — leaving them is a landmine: re-add the
 // class and the section disappears for good.
@@ -164,11 +184,19 @@ p,li{font-family:Georgia,serif;color:#909}
 a{color:#0aa;text-decoration:underline wavy}
 img{border:6px solid #0f0;border-radius:50%}
 .host{padding:20px;background:#eee;border-bottom:3px solid #999;font:14px system-ui}
+/* the shape of the real eDealer page: content column beside a Contact/Hours sidebar */
+.layout{display:flex;gap:24px;padding:0 24px;align-items:flex-start}
+.main{flex:1 1 auto;min-width:0}
+.side{flex:0 0 330px;background:#eee;padding:16px;font:14px system-ui}
+.side h4{background:#8b0000;color:#fff;margin:0 0 8px;padding:10px}
 </style></head><body>
-<div class="host">host page chrome (theme styles above are deliberately hostile)</div>
-<div class="wrap"><p>Theme content before the paste.</p></div>
+<div class="host">eDealer page: narrow content column + sidebar, with deliberately hostile theme CSS</div>
+<div class="layout"><div class="main">
 ${await readFile('edealer/legacy-edealer.html', 'utf8')}
-<div class="wrap"><p>Theme content after the paste.</p></div>
+</div><aside class="side">
+<h4>Contact Us</h4><p>1743 Eglinton Ave E<br>Toronto ON M4A 1J8</p>
+<h4>Hours of Operation</h4><p>Mon-Thu 9:00am - 8:00pm<br>Fri-Sat 9:00am - 6:00pm<br>Sunday Closed</p>
+</aside></div>
 </body></html>
 `);
 

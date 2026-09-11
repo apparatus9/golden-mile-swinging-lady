@@ -11,26 +11,21 @@ p,li{font-family:Georgia,serif;color:#909}
 a{color:#0aa;text-decoration:underline wavy}
 img{border:6px solid #0f0;border-radius:50%}
 .host{padding:20px;background:#eee;border-bottom:3px solid #999;font:14px system-ui}
+/* the shape of the real eDealer page: content column beside a Contact/Hours sidebar */
+.layout{display:flex;gap:24px;padding:0 24px;align-items:flex-start}
+.main{flex:1 1 auto;min-width:0}
+.side{flex:0 0 330px;background:#eee;padding:16px;font:14px system-ui}
+.side h4{background:#8b0000;color:#fff;margin:0 0 8px;padding:10px}
 </style></head><body>
-<div class="host">host page chrome (theme styles above are deliberately hostile)</div>
-<div class="wrap"><p>Theme content before the paste.</p></div>
+<div class="host">eDealer page: narrow content column + sidebar, with deliberately hostile theme CSS</div>
+<div class="layout"><div class="main">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap');
 .gmc-legacy :where(h1,h2,h3,h4,h5,h6,p,a,span,em,i,strong,b,small,ul,ol,li,div,section,figure,figcaption,blockquote,hr,img,details,summary,button,label){margin:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;text-decoration:none;text-transform:none;text-shadow:none;float:none;outline:none;font-family:inherit;font-size:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;list-style:none;max-width:none;width:auto}
 .gmc-legacy.gmc-legacy :where(p,li,a,span,div,em,strong,b,figcaption,summary,blockquote){font-family:var(--sans);color:inherit}
-.gmc-legacy.gmc-legacy{--red:#ca0000;
-  --red-dark:#970000;
-  --black:#000;
-  --ink:#111;
-  --body:#3a3a3a;
-  --muted:#767676;
-  --line:#e2e2e2;
-  --grey:#f4f4f4;
-  --head:'Oswald','Arial Narrow',Helvetica,Arial,sans-serif;
-  --sans:Arial,Helvetica,sans-serif;}
+.gmc-legacy.gmc-legacy{container:gmclegacy / inline-size;--red:#ca0000; --red-dark:#970000; --black:#000; --ink:#111; --body:#3a3a3a; --muted:#767676; --line:#e2e2e2; --grey:#f4f4f4; --head:'Oswald','Arial Narrow',Helvetica,Arial,sans-serif; --sans:Arial,Helvetica,sans-serif;}
 .gmc-legacy.gmc-legacy,.gmc-legacy.gmc-legacy *,.gmc-legacy.gmc-legacy *::before,.gmc-legacy.gmc-legacy *::after{box-sizing:border-box}
-.gmc-legacy.gmc-legacy{margin:0;background:#fff;color:var(--body);
-  font-family:var(--sans);font-size:17px;line-height:27px;overflow-x:hidden;}
+.gmc-legacy.gmc-legacy{margin:0;background:#fff;color:var(--body); font-family:var(--sans);font-size:17px;line-height:27px;overflow-x:hidden;}
 .gmc-legacy.gmc-legacy img{max-width:100%;display:block}
 .gmc-legacy.gmc-legacy a{color:inherit}
 .gmc-legacy.gmc-legacy .gmc-wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 28px}
@@ -44,16 +39,12 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy p:last-child{margin-bottom:0}
 .gmc-legacy.gmc-legacy strong{color:var(--ink)}
 .gmc-legacy.gmc-legacy .gmc-lede{font-size:20px;line-height:32px;color:var(--ink)}
-.gmc-legacy.gmc-legacy .gmc-eyebrow{font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.6px;
-  text-transform:uppercase;color:var(--red);margin:0 0 16px;}
+.gmc-legacy.gmc-legacy .gmc-eyebrow{font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.6px; text-transform:uppercase;color:var(--red);margin:0 0 16px;}
 .gmc-legacy.gmc-legacy .gmc-rule{width:44px;height:3px;background:var(--red);border:0;margin:20px 0 0}
 .gmc-legacy.gmc-legacy .gmc-head{text-align:center;max-width:720px;margin:0 auto 56px}
 .gmc-legacy.gmc-legacy .gmc-head .gmc-rule{margin-left:auto;margin-right:auto}
 .gmc-legacy.gmc-legacy .gmc-head p{margin:24px 0 0;color:var(--muted)}
-.gmc-legacy.gmc-legacy .gmc-btn{display:inline-flex;align-items:center;justify-content:center;
-  font-family:var(--head);font-weight:500;font-size:15px;letter-spacing:1.2px;text-transform:uppercase;
-  padding:15px 32px;text-decoration:none;border:1px solid transparent;cursor:pointer;
-  transition:background .18s,color .18s,border-color .18s;}
+.gmc-legacy.gmc-legacy .gmc-btn{display:inline-flex;align-items:center;justify-content:center; font-family:var(--head);font-weight:500;font-size:15px;letter-spacing:1.2px;text-transform:uppercase; padding:15px 32px;text-decoration:none;border:1px solid transparent;cursor:pointer; transition:background .18s,color .18s,border-color .18s;}
 .gmc-legacy.gmc-legacy .gmc-btn-red{background:var(--red);color:#fff;border-color:var(--red)}
 .gmc-legacy.gmc-legacy .gmc-btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
 .gmc-legacy.gmc-legacy .gmc-btn-line{background:transparent;color:var(--ink);border-color:var(--ink)}
@@ -71,8 +62,7 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .logo b{display:block;font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink)}
 .gmc-legacy.gmc-legacy .logo span{display:block;font-family:var(--head);font-weight:400;font-size:10px;letter-spacing:3.6px;text-transform:uppercase;color:var(--red);margin-top:4px}
 .gmc-legacy.gmc-legacy .nav{display:flex;align-items:center;gap:30px}
-.gmc-legacy.gmc-legacy .nav a{font-family:var(--head);font-weight:400;font-size:14px;letter-spacing:1.2px;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;transition:color .18s;}
+.gmc-legacy.gmc-legacy .nav a{font-family:var(--head);font-weight:400;font-size:14px;letter-spacing:1.2px;text-transform:uppercase; color:var(--ink);text-decoration:none;transition:color .18s;}
 .gmc-legacy.gmc-legacy .nav a:hover{color:var(--red)}
 .gmc-legacy.gmc-legacy .navtoggle{display:none;background:none;border:1px solid var(--line);padding:10px 13px;cursor:pointer;font-size:15px;line-height:1}
 .gmc-legacy.gmc-legacy .gmc-hero{position:relative;background:var(--black);color:#fff;padding:96px 0 104px;overflow:hidden}
@@ -83,10 +73,7 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
 .gmc-legacy.gmc-legacy .gmc-herofig{position:relative;align-self:stretch;min-height:520px}
 .gmc-legacy.gmc-legacy .gmc-hang{position:absolute;top:-96px;bottom:0;left:0;right:0;display:flex;justify-content:center}
-.gmc-legacy.gmc-legacy .gmc-hang img{height:100%;width:auto;max-width:none;
-  transform-origin:68.4% 0%;
-  animation:swing 5.6s cubic-bezier(.42,0,.58,1) infinite alternate;
-  animation-play-state:paused;}
+.gmc-legacy.gmc-legacy .gmc-hang img{height:100%;width:auto;max-width:none; transform-origin:68.4% 0%; animation:swing 5.6s cubic-bezier(.42,0,.58,1) infinite alternate; animation-play-state:paused;}
 @keyframes swing{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
 .gmc-legacy.gmc-legacy .swinging{animation-play-state:running!important}
 .gmc-legacy.gmc-legacy .gmc-strip{background:var(--red);color:#fff;text-align:center;padding:17px 24px}
@@ -100,9 +87,7 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-sec.gmc-black .gmc-head p{color:#9a9a9a}
 .gmc-legacy.gmc-legacy .gmc-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
 .gmc-legacy.gmc-legacy .gmc-split.gmc-top{align-items:start}
-.gmc-legacy.gmc-legacy .gmc-quote{margin:44px 0 0;padding:0;border:0;
-  font-family:var(--head);font-weight:400;font-size:clamp(1.35rem,2.6vw,1.85rem);
-  line-height:1.32;color:var(--ink);letter-spacing:.3px;}
+.gmc-legacy.gmc-legacy .gmc-quote{margin:44px 0 0;padding:0;border:0; font-family:var(--head);font-weight:400;font-size:clamp(1.35rem,2.6vw,1.85rem); line-height:1.32;color:var(--ink);letter-spacing:.3px;}
 .gmc-legacy.gmc-legacy .gmc-quote::before{content:"";display:block;width:44px;height:3px;background:var(--red);margin-bottom:24px}
 .gmc-legacy.gmc-legacy .gmc-sec.gmc-black .gmc-quote{color:#fff}
 .gmc-legacy.gmc-legacy .gmc-stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #2a2a2a}
@@ -112,8 +97,7 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-stat span{display:block;margin-top:14px;font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.2px;text-transform:uppercase;color:var(--red)}
 .gmc-legacy.gmc-legacy .gmc-panel{position:relative;width:100%;max-width:330px;margin:0;justify-self:end}
 .gmc-legacy.gmc-legacy .gmc-panel img{width:100%;height:auto}
-.gmc-legacy.gmc-legacy .gmc-panel figcaption{border-top:1px solid var(--line);margin-top:26px;padding:18px 0 0;text-align:center;
-  font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);}
+.gmc-legacy.gmc-legacy .gmc-panel figcaption{border-top:1px solid var(--line);margin-top:26px;padding:18px 0 0;text-align:center; font-family:var(--head);font-weight:500;font-size:12px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted);}
 .gmc-legacy.gmc-legacy .gmc-timeline{max-width:720px;margin:0 auto}
 .gmc-legacy.gmc-legacy .gmc-tl{padding:34px 0;border-top:1px solid var(--line)}
 .gmc-legacy.gmc-legacy .gmc-tl:first-child{border-top:0;padding-top:0}
@@ -127,9 +111,7 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-band{background:var(--black);color:#fff;text-align:center;padding:clamp(64px,8vw,96px) 0}
 .gmc-legacy.gmc-legacy .gmc-band h2{color:#fff}
 .gmc-legacy.gmc-legacy .gmc-band p{color:#9a9a9a;max-width:52ch;margin:22px auto 34px}
-.gmc-legacy.gmc-legacy .gmc-phone{display:inline-flex;align-items:center;text-decoration:none;
-  font-family:var(--head);font-weight:500;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:1.6px;
-  color:#fff;background:var(--red);padding:14px 42px;transition:background .18s;}
+.gmc-legacy.gmc-legacy .gmc-phone{display:inline-flex;align-items:center;text-decoration:none; font-family:var(--head);font-weight:500;font-size:clamp(1.7rem,4vw,2.5rem);letter-spacing:1.6px; color:#fff;background:var(--red);padding:14px 42px;transition:background .18s;}
 .gmc-legacy.gmc-legacy .gmc-phone:hover{background:var(--red-dark)}
 .gmc-legacy.gmc-legacy .gmc-fees{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:48px}
 .gmc-legacy.gmc-legacy .gmc-fees h3{font-size:12px;letter-spacing:2.4px;font-weight:500;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid #2a2a2a}
@@ -149,14 +131,10 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-links a:hover b{color:var(--red)}
 .gmc-legacy.gmc-legacy .gmc-faq{max-width:760px;margin:0 auto;border-top:1px solid var(--line)}
 .gmc-legacy.gmc-legacy .gmc-faq details{border-bottom:1px solid var(--line)}
-.gmc-legacy.gmc-legacy .gmc-faq summary{cursor:pointer;list-style:none;padding:26px 46px 26px 0;position:relative;
-  font-family:var(--head);font-weight:500;font-size:clamp(17px,2vw,20px);letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--ink);}
+.gmc-legacy.gmc-legacy .gmc-faq summary{cursor:pointer;list-style:none;padding:26px 46px 26px 0;position:relative; font-family:var(--head);font-weight:500;font-size:clamp(17px,2vw,20px);letter-spacing:1.2px; text-transform:uppercase;color:var(--ink);}
 .gmc-legacy.gmc-legacy .gmc-faq summary::-webkit-details-marker{display:none}
 .gmc-legacy.gmc-legacy .gmc-faq summary:hover{color:var(--red)}
-.gmc-legacy.gmc-legacy .gmc-faq summary::after{content:"";position:absolute;right:8px;top:50%;width:10px;height:10px;
-  border-right:2px solid var(--red);border-bottom:2px solid var(--red);
-  transform:translateY(-70%) rotate(45deg);transition:transform .2s;}
+.gmc-legacy.gmc-legacy .gmc-faq summary::after{content:"";position:absolute;right:8px;top:50%;width:10px;height:10px; border-right:2px solid var(--red);border-bottom:2px solid var(--red); transform:translateY(-70%) rotate(45deg);transition:transform .2s;}
 .gmc-legacy.gmc-legacy .gmc-faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
 .gmc-legacy.gmc-legacy .gmc-faq .gmc-ans{padding:0 8px 30px 0;font-size:17px}
 .gmc-legacy.gmc-legacy .gmc-faq .gmc-ans a{color:var(--red);font-weight:bold}
@@ -175,7 +153,8 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:24px 0 34px;font-size:14px;color:var(--muted)}
 .gmc-legacy.gmc-legacy .gmc-hang img,.gmc-legacy.gmc-legacy .gmc-panel .stage img{animation:none!important}
 }
-@media (max-width:1000px){.gmc-legacy.gmc-legacy .gmc-hero{padding:64px 0 0}
+@container gmclegacy (max-width:1000px){
+.gmc-legacy.gmc-legacy .gmc-hero{padding:64px 0 0}
 .gmc-legacy.gmc-legacy .gmc-hero .gmc-wrap{grid-template-columns:1fr;gap:40px}
 .gmc-legacy.gmc-legacy .gmc-herofig{min-height:430px}
 .gmc-legacy.gmc-legacy .gmc-hang{top:0;position:relative;height:430px}
@@ -190,12 +169,10 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .nav{display:none}
 .gmc-legacy.gmc-legacy .navtoggle{display:block}
 .gmc-legacy.gmc-legacy .hdr{position:relative}
-.gmc-legacy.gmc-legacy .hdr.open .nav{display:flex;flex-direction:column;align-items:stretch;gap:0;
-    position:absolute;top:100%;left:0;right:0;background:#fff;
-    border-bottom:1px solid var(--line);padding:0 28px 16px;}
+.gmc-legacy.gmc-legacy .hdr.open .nav{display:flex;flex-direction:column;align-items:stretch;gap:0; position:absolute;top:100%;left:0;right:0;background:#fff; border-bottom:1px solid var(--line);padding:0 28px 16px;}
 .gmc-legacy.gmc-legacy .hdr.open .nav a{padding:15px 0;border-top:1px solid var(--line)}
 }
-@media (max-width:640px){.gmc-legacy.gmc-legacy{font-size:16px;line-height:26px}
+@container gmclegacy (max-width:640px){
 .gmc-legacy.gmc-legacy .gmc-wrap{padding:0 20px}
 .gmc-legacy.gmc-legacy .gmc-stats{grid-template-columns:1fr}
 .gmc-legacy.gmc-legacy .gmc-stat{border-left:0;border-top:1px solid #2a2a2a;padding:32px 18px}
@@ -207,11 +184,17 @@ img{border:6px solid #0f0;border-radius:50%}
 .gmc-legacy.gmc-legacy .gmc-hang img{height:340px}
 .gmc-legacy.gmc-legacy .gmc-herofig{min-height:340px}
 }
+@media (max-width:640px){
+.gmc-legacy.gmc-legacy{font-size:16px;line-height:26px}
+}
 .gmc-legacy.gmc-legacy > p:empty{display:none}
 .gmc-legacy.gmc-legacy > br{display:none}
 .gmc-legacy.gmc-legacy p:has(> img){margin:0}
 </style>
 <div class="gmc-legacy"><section class="gmc-hero" id="gmc-top"> <div class="gmc-wrap"> <div> <p class="gmc-eyebrow">Eglinton Avenue East &middot; Scarborough</p> <h1>The Swinging Lady</h1> <p>Toronto's iconic billboard — a 40-foot illuminated figure who has been gliding back and forth above Eglinton Avenue East since 1962, quietly inviting every passing driver to swing on by.</p> <div class="cta"> <a class="gmc-btn gmc-btn-red" href="tel:+14373715007">Call 437-371-5007</a> <a class="gmc-btn gmc-btn-light" href="#gmc-landmark">Read Her Story</a> </div> </div> <div class="gmc-herofig"> <span class="gmc-hang"> <img class="gmc-swing" src="https://goldenmile-swinging-lady.netlify.app/images/swinging-lady.png" width="543" height="979" fetchpriority="high" alt="The Swinging Lady — the 40-foot illuminated figure that has hung above Golden Mile Chrysler on Eglinton Avenue East since 1962"> </span> </div> </div> </section> <div class="gmc-strip"><p>Swinging over Eglinton Avenue East since 1962</p></div> <section class="gmc-sec" id="gmc-landmark"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">The Landmark</p> <h2>A 40-Foot Toronto Landmark</h2> <hr class="gmc-rule"> </div> <div class="gmc-col gmc-mid"> <p class="gmc-lede">Ask anyone who has driven Eglinton Avenue East through Scarborough and they will know exactly where Golden Mile Chrysler is — even if they have never set foot on the lot.</p> <p>They know it because of the Swinging Lady. For more than sixty years, a 40-foot illuminated figure has perched on a swing above the dealership, gliding back and forth and quietly inviting passing drivers to “swing on by.”</p> <p>She first went up in 1962, back when the dealership was Willison Chrysler. In the decades since, the name on the building has changed and the cars on the lot have changed, but the Swinging Lady has kept swinging — through Toronto winters, summer heat waves, and every era of the city that has grown up around her.</p> <blockquote class="gmc-quote">She is not just decoration. She is a piece of Toronto and Scarborough car-culture history.</blockquote> </div> </div> </section> <section class="gmc-sec gmc-black" style="padding:0"> <div class="gmc-wrap" style="padding:0"> <div class="gmc-stats"> <div class="gmc-stat"><b>1962</b><span>First Raised</span></div> <div class="gmc-stat"><b>40 ft</b><span>Tall</span></div> <div class="gmc-stat"><b>60+</b><span>Years Swinging</span></div> <div class="gmc-stat"><b>1</b><span>Toronto Landmark</span></div> </div> </div> </section> <section class="gmc-sec gmc-grey" id="gmc-seasons"> <div class="gmc-wrap"> <div class="gmc-split gmc-top"> <div> <p class="gmc-eyebrow">Her Wardrobe</p> <h2>She Dresses for the Season</h2> <hr class="gmc-rule"> <p class="gmc-lede" style="margin-top:32px">Part of the charm is that she pays attention to the weather.</p> <p>In summer the Swinging Lady wears a bikini; when the snow arrives off Lake Ontario, she bundles up in a parka. Generations of GTA kids have watched for her seasonal wardrobe change from the back seat on the drive along Eglinton.</p> <p>It is a small thing, and it is exactly why people remember her. A billboard that changes with the city feels less like advertising and more like a neighbour.</p> </div> <figure class="gmc-panel"> <img src="https://goldenmile-swinging-lady.netlify.app/images/swinging-lady-bw.png" width="680" height="1367" loading="lazy" decoding="async" alt="Illustration of the Swinging Lady on her swing"> <figcaption>Above Eglinton Avenue East since 1962</figcaption> </figure> </div> </div> </section> <section class="gmc-sec" id="gmc-timeline"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">Sixty Years Above Eglinton</p> <h2>Still Swinging, Through Every Era</h2> <hr class="gmc-rule"> </div> <div class="gmc-timeline"> <div class="gmc-tl"> <span class="gmc-yr">1962</span> <h3>She goes up over Willison Chrysler</h3> <p>A 40-foot illuminated figure is raised above the lot on Eglinton Avenue East. The dealership is called Willison Chrysler. Cars still have fins. She starts swinging, and does not stop.</p> </div> <div class="gmc-tl"> <span class="gmc-yr">The 1970s &amp; 80s</span> <h3>A drive-by ritual for the east end</h3> <p>Bikini in July. Parka in January. Kids in the back seat learn to watch for her wardrobe change on the drive down Eglinton — the unofficial way Scarborough tells the seasons apart.</p> </div> <div class="gmc-tl gmc-hot"> <span class="gmc-yr">The 1980s</span> <h3>She vanishes</h3> <p>One day the swing is empty. The Swinging Lady briefly goes missing, sparking a small civic mystery before she is found and returned to her perch. If anything, the disappearance only cements her status as a beloved neighbourhood fixture — you do not miss a billboard unless it belongs to you.</p> </div> <div class="gmc-tl"> <span class="gmc-yr">Through the decades</span> <h3>The name changes. She does not.</h3> <p>Ownership changes hands, the lineup turns over, and the city grows up around her. The sign has been written up in the local press and is fondly remembered by anyone who grew up in the east end.</p> </div> <div class="gmc-tl"> <span class="gmc-yr">Today</span> <h3>Golden Mile Chrysler, 1743 Eglinton Ave. East</h3> <p>She watches over the lot near Bermondsey Road, now led by President Navin Kotecha — The Car Doctor — and the CDD6 campaign. Same swing. Same invitation. A very different way of selling cars underneath it.</p> </div> </div> </div> </section> <section class="gmc-band"> <div class="gmc-wrap"> <p class="gmc-eyebrow" style="color:#fff;opacity:.55">Swing On By — Or Just Call The Doctor</p> <h2>The Swinging Lady marks the spot.<br>The Car Doctor handles the rest.</h2> <p>Sixty years of pointing drivers to this corner. Here is what is waiting underneath her now.</p> <a class="gmc-phone" href="tel:+14373715007">437-371-5007</a> </div> </section> <section class="gmc-sec" id="gmc-today"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">Today</p> <h2>Still Swinging at Golden Mile Chrysler</h2> <hr class="gmc-rule"> </div> <div class="gmc-col gmc-mid"> <p class="gmc-lede">Today the Swinging Lady watches over Golden Mile Chrysler at 1743 Eglinton Avenue East, near Bermondsey Road.</p> <p>The dealership is now led by President <strong>Navin Kotecha — The Car Doctor</strong> — and runs the CDD6 campaign: transparent, all-in weekly lease pricing on new Chrysler, Dodge, Jeep, and RAM vehicles, with every dealer fee built into the number you see.</p> <p>So the landmark that has invited drivers to “swing on by” since 1962 now points to something genuinely worth stopping for: honest pricing, no runaround, and a president who answers for every deal personally.</p> <blockquote class="gmc-quote">Next time you spot her over Eglinton, you will know the story — and the deals waiting underneath.</blockquote> </div> <div class="gmc-links"> <a href="#gmc-landmark"><b>About Golden Mile Chrysler</b><span>One of Toronto's longest-running Chrysler Dodge Jeep RAM dealerships — on Eglinton since 1962.</span><em>Since 1962 &rarr;</em></a> <a href="#gmc-doctor"><b>Meet The Car Doctor</b><span>How Navin Kotecha went from the shop floor to the front of the building — and why it changed the pricing.</span><em>Navin Kotecha &rarr;</em></a> <a href="https://cdd6.ca" target="_blank" rel="noopener"><b>This Month's CDD6 Deals</b><span>Six prescriptions. All-in weekly lease pricing. Published before you ever pick up the phone.</span><em>See the deals &rarr;</em></a> </div> </div> </section> <section class="gmc-sec gmc-black" id="gmc-doctor"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">The Short Version</p> <h2>Bad Car Deals Are The Disease.<br>Transparent Pricing Is The Cure.</h2> <hr class="gmc-rule"> </div> <div class="gmc-col gmc-mid"> <p class="gmc-lede">Nav runs Golden Mile Chrysler. He thinks the way most dealerships sell cars is broken — too many hidden fees, too much back-and-forth, too much wasted time. So he built CDD6 to fix it.</p> <p><strong>CDD6 stands for Car Doctor Deals in the 6ix.</strong> Every month, Nav prescribes six lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles. Each one is tagged like a medical prescription — Rx #001 through Rx #006 — because the whole concept is built around one idea.</p> <p>The weekly lease prices on CDD6 include everything the dealer controls. Freight, PDI, admin fees, OMVIC fee — all baked in. The only extras are HST and license plates, because those go to the government, not the dealership.</p> <p>That is not a marketing gimmick. It is Ontario law under OMVIC. The difference is that Nav actually follows it to the letter and puts the real number on the website before you ever pick up the phone.</p> <div class="gmc-fees"> <div> <h3>Baked Into The Weekly Price</h3> <ul><li>Freight</li><li>PDI</li><li>Admin fee</li><li>OMVIC fee</li><li>Air conditioning charge</li></ul> </div> <div class="gmc-out"> <h3>The Only Extras — Paid To Government</h3> <ul><li>HST</li><li>License plates</li></ul> </div> </div> </div> </div> </section> <section class="gmc-sec"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">The Background</p> <h2>How Nav Got Here</h2> <hr class="gmc-rule"> <p>He learned the business from the shop floor, not the showroom floor. That is the whole difference.</p> </div> <div class="gmc-col gmc-mid"> <p class="gmc-lede">Navin Kotecha did not grow up planning to run a car dealership. But the automotive industry found him early, and he stayed because he was good at it.</p> <p>Nav built his career across some of Toronto's busiest dealership operations. He managed fixed operations — the service bays, the parts departments, the side of the business most customers never see but every dealer depends on. That is where you learn how a dealership actually works: not from the showroom floor, but from the shop floor. You learn what it costs to run the operation, what margins look like, where money gets wasted, and where customers get overcharged.</p> <blockquote class="gmc-quote">He understands the cost structure of every deal because he spent years inside the machine before he sat at the front of it.</blockquote> <p style="margin-top:44px">When he tells you a price is all-in, he knows exactly what “all-in” means — down to the OMVIC fee and the air conditioning charge.</p> <p>When the opportunity to lead Golden Mile Chrysler came along, Nav took it with a clear plan: strip the games out of the buying process and build something people could actually trust. Golden Mile had the location, the legacy, the Swinging Lady billboard that half of Toronto grew up driving past. What it needed was a new approach. Nav brought one.</p> </div> </div> </section> <section class="gmc-sec gmc-grey"> <div class="gmc-wrap"> <div class="gmc-split gmc-top"> <div> <p class="gmc-eyebrow">What CDD6 Actually Is</p> <h2>CDD6 Is Nav's Prescription Pad</h2> <hr class="gmc-rule"> <p style="margin-top:32px">CDD6 is not the dealership. Golden Mile Chrysler is the dealership.</p> <p>Every month, Stellantis — the parent company behind Chrysler, Dodge, Jeep, and RAM — releases new OEM incentive programs. Factory rebates, subvented lease rates, loyalty bonuses. Most dealerships bury those programs in the fine print and use them to pad their own margins. Nav takes those programs and passes them through to the customer as aggressively as possible, then publishes the result on <a href="https://cdd6.ca" target="_blank" rel="noopener" style="color:var(--red);font-weight:bold">cdd6.ca</a>.</p> <p>The six deals rotate monthly. When a new Stellantis program drops, Nav recalculates, picks the six strongest prescriptions, and publishes them. Old deal pages redirect to the permanent model pages, so you always see what is current, never what expired last month.</p> <p>Each deal shows the weekly lease payment, the cash down, the term, the rate, the kilometre allowance, and the complete due-on-delivery breakdown. Everything. On the page. Before you call.</p> </div> <div> <h3 style="font-size:12px;letter-spacing:2.4px;font-weight:500;color:var(--red)">This Month's Six</h3> <div class="gmc-rx"> <div><b>Rx #001</b><span>Chrysler</span></div> <div><b>Rx #002</b><span>Dodge</span></div> <div><b>Rx #003</b><span>Jeep</span></div> <div><b>Rx #004</b><span>RAM</span></div> <div><b>Rx #005</b><span>Dealer's choice</span></div> <div><b>Rx #006</b><span>Door-crasher</span></div> </div> <p class="gmc-rxnote">Six prescriptions, refilled every month against the latest Stellantis programs. Weekly lease pricing, all dealer fees included.</p> <a class="gmc-btn gmc-btn-line" href="https://cdd6.ca" target="_blank" rel="noopener" style="margin-top:26px">Fill at cdd6.ca</a> </div> </div> </div> </section> <section class="gmc-sec"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">Why “Prescriptions”?</p> <h2>The Metaphor Is Not An Accident</h2> <hr class="gmc-rule"> </div> <div class="gmc-col gmc-mid"> <p class="gmc-lede">Nav calls himself The Car Doctor because the problem he is solving feels like a diagnosis.</p> <p><strong style="color:var(--red)">The symptoms:</strong> you search for a car deal online, you find a price that looks good, you drive to the dealership, you sit down, and the number changes. Freight gets added. An admin fee appears. PDI was not included. Suddenly the deal you saw online is hundreds more per month than what you budgeted. That is the disease.</p> <p><strong style="color:var(--red)">The prescription:</strong> publish the real, all-in price before the customer walks in. Include every fee the dealer controls. Make the weekly payment the actual weekly payment — plus government taxes and plates, and nothing else. No negotiation required.</p> <blockquote class="gmc-quote">CDD6 deals are labelled Rx #001 through Rx #006 because they are meant to be filled, not haggled over.</blockquote> <p style="margin-top:44px">You see the prescription. You call the number. The price on the phone is the price on the page. That is how it works.</p> </div> </div> </section> <section class="gmc-sec gmc-grey" id="gmc-faq"> <div class="gmc-wrap"> <div class="gmc-head"> <p class="gmc-eyebrow">About The Car Doctor</p> <h2>Frequently Asked Questions</h2> <hr class="gmc-rule"> </div> <div class="gmc-faq"> <details open> <summary>Who is The Car Doctor?</summary> <div class="gmc-ans"><p>The Car Doctor is Navin Kotecha — Nav — President of Golden Mile Chrysler at 1743 Eglinton Avenue East in Toronto. Nav created the CDD6 campaign (Car Doctor Deals in the 6ix), which prescribes monthly door-crasher lease deals on new Chrysler, Dodge, Jeep, and RAM vehicles with fully transparent, all-in weekly pricing. Call his team at <a href="tel:+14373715007">437-371-5007</a>.</p></div> </details> <details> <summary>Who is Navin Kotecha?</summary> <div class="gmc-ans"><p>Navin Kotecha is the President of Golden Mile Chrysler, one of Toronto's longest-running Chrysler Dodge Jeep RAM dealerships. Known as The Car Doctor, Nav built his career across multiple major dealership groups in Toronto before taking the helm at Golden Mile. He launched the CDD6 campaign to bring transparent, OMVIC-compliant lease deals directly to Toronto drivers without the typical dealership runaround.</p></div> </details> <details> <summary>What does The Car Doctor prescribe?</summary> <div class="gmc-ans"><p>The Car Doctor prescribes six monthly lease deals — tagged Rx #001 through Rx #006 — on new Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler. Each prescription features aggressive weekly lease pricing that includes all dealer fees (freight, PDI, admin, OMVIC). Only HST and licensing are extra. The deals rotate monthly based on Stellantis OEM incentive programs.</p></div> </details> <details> <summary>How do I contact The Car Doctor?</summary> <div class="gmc-ans"><p>Call The Car Doctor's team directly at <a href="tel:+14373715007">437-371-5007</a>. Golden Mile Chrysler is located at 1743 Eglinton Avenue East, Toronto, ON M4A 1J8 — the dealership with the iconic Swinging Lady billboard. No appointment necessary. Nav's team handles everything from first call to delivery.</p></div> </details> <details> <summary>Where is the Swinging Lady billboard?</summary> <div class="gmc-ans"><p>She has been above Golden Mile Chrysler at 1743 Eglinton Avenue East, near Bermondsey Road in Toronto, since 1962 — first raised when the dealership traded as Willison Chrysler. She is visible to eastbound and westbound traffic along Eglinton, and she still changes outfits with the season.</p></div> </details> </div> <details class="gmc-terms"> <summary>View Full Terms &#9662;</summary> <div class="gmc-b"> <p>All CDD6 weekly lease prices include every fee the dealer controls — freight, PDI, administration, air conditioning charge, and the OMVIC fee — in accordance with Ontario's all-in price advertising requirements under the <em>Motor Vehicle Dealers Act</em> as administered by OMVIC. HST and license plate fees are extra, as they are payable to the government and not to the dealership.</p> <p>Lease offers are based on current Stellantis Canada OEM incentive programs and are subject to change without notice when those programs change. Advertised payments assume the stated term, cash down, annual kilometre allowance, and lease rate shown on the individual deal page at cdd6.ca. Additional kilometres, excess wear and tear, and optional equipment are extra. Offers apply to new, in-stock Chrysler, Dodge, Jeep, and RAM vehicles at Golden Mile Chrysler, 1743 Eglinton Avenue East, Toronto, ON M4A 1J8, and are subject to credit approval and availability. Vehicle images and descriptions are for illustration only. See dealer for complete details.</p> <p>Historical details regarding the Swinging Lady sign, including its 1962 installation above Willison Chrysler and its temporary disappearance in the 1980s, are recounted from local press coverage and long-standing community recollection.</p> </div> </details> </div> </section></div>
 
-<div class="wrap"><p>Theme content after the paste.</p></div>
+</div><aside class="side">
+<h4>Contact Us</h4><p>1743 Eglinton Ave E<br>Toronto ON M4A 1J8</p>
+<h4>Hours of Operation</h4><p>Mon-Thu 9:00am - 8:00pm<br>Fri-Sat 9:00am - 6:00pm<br>Sunday Closed</p>
+</aside></div>
 </body></html>
