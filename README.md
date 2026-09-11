@@ -37,6 +37,42 @@ rather than RGBA — 251 KB instead of 748 KB, with no visible loss.
 
 ## Pasting into WordPress / eDealer
 
+**Use `edealer/legacy-inline.html`.** One paste, into the code box. Nothing else.
+
+`node build-edealer-inline.mjs` generates it. Every style is an inline `style=""`
+attribute, because that is the only styling the CMS leaves alone:
+
+| Tried | Result on the live page |
+|---|---|
+| `<style>` in the HTML block | stripped outright — page rendered with no CSS at all |
+| raw CSS in the HTML block | printed as visible text, and `wptexturize` turned `--red` into `–red` |
+| inline `style=""` | survives — `wptexturize` and `wpautop` only touch text *between* tags |
+
+What inline styles cannot do, and how the build copes:
+
+- **No `@keyframes`** — the hero figure does not swing in the CMS version. Unavoidable.
+- **No media queries** — layout is `flex-wrap` + `flex-basis`, so it reflows on its own
+  at any column width. This matters: the page sits in a ~900px column beside the
+  Contact/Hours sidebar, so viewport queries would never have fired anyway.
+- **No `::before`** — the quote bar and the timeline marker are real elements now.
+- **No `:hover`** — dropped.
+- **No `@import`** — not needed, the site already loads Oswald.
+
+`background` and `color` carry `!important`, and nothing else does. A theme rule with
+`!important` beats a plain inline style; in testing that knocked the black off the hero
+and left white text on a pale ground. Those two properties decide legibility, so they
+get the armour.
+
+Colour and font are set on **every** text element rather than inherited — an inherited
+value loses to any direct theme rule, which is how the body copy came out in Georgia.
+
+`edealer/preview-inline.html` renders the paste after a simulated `wptexturize` +
+`wpautop`, inside a narrow column, under deliberately hostile theme CSS.
+
+### The scoped-stylesheet version (only if a stylesheet box exists)
+
+
+
 `node build-edealer.mjs` regenerates `edealer/` from `index.html`, so the standalone
 page and the CMS version can never drift.
 
