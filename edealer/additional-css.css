@@ -1,8 +1,36 @@
-/* Swinging Lady legacy page — restores the pendulum on the hero figure.
-   The page itself is styled with inline attributes (eDealer's code box strips <style>),
-   and @keyframes has no inline form, so this one rule lives here instead.
-   It matches the image by filename, so nothing else on the site can be affected.
-   Pivot is 68.4% across the artwork: the point the two ropes hang from. */
-@keyframes gmcSwingingLady{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}
-img[src*="swinging-lady.png"]{transform-origin:68.4% 0;animation:gmcSwingingLady 5.6s cubic-bezier(.42,0,.58,1) infinite alternate}
-@media (prefers-reduced-motion:reduce){img[src*="swinging-lady.png"]{animation:none}}
+/* Golden Mile — the Swinging Lady legacy page.
+   The page itself is styled entirely with inline style="" attributes, because
+   eDealer's code box strips <style>. These are the only things an inline style
+   cannot express: @keyframes and :hover. Everything below is scoped so it can
+   match nothing else on the site. */
+
+/* ---- the swing -----------------------------------------------------------
+   transform-origin 68.4% 0 is the point the two ropes hang from in the artwork,
+   so she pivots from the beam rather than spinning about her middle.
+   Matched by filename: the wardrobe illustration is swinging-lady-bw.png and
+   does not contain this string, so it stays still. */
+@keyframes gmcSwingingLady {
+  from { transform: rotate(-6deg); }
+  to   { transform: rotate(6deg); }
+}
+img[src*="swinging-lady.png"] {
+  transform-origin: 68.4% 0;
+  animation: gmcSwingingLady 5.6s cubic-bezier(.42, 0, .58, 1) infinite alternate;
+}
+
+/* ---- hover states --------------------------------------------------------
+   The page's inline backgrounds carry !important (a theme !important rule would
+   otherwise knock the black off the hero), so these have to as well.
+   div[style*="container-type"] is the page's own wrapper — the scope. */
+div[style*="container-type"] a[href^="tel:"]:hover {
+  background: #970000 !important;
+  border-color: #970000 !important;
+}
+div[style*="container-type"] summary:hover {
+  color: #ca0000 !important;
+}
+
+/* ---- respect the reader's motion preference ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  img[src*="swinging-lady.png"] { animation: none; }
+}
