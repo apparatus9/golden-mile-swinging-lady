@@ -89,6 +89,20 @@ const section = (inner, { pad = 54, seam = true } = {}) =>
   (seam ? `;border-top:1px solid ${LINE}` : '') +
   `"><div style="max-width:1100px;margin:0 auto;padding:0 22px">${inner}</div></section>`;
 
+const mark = () =>
+  '<div style="display:flex;align-items:center;gap:20px;max-width:680px;margin:44px auto 0">' +
+    `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
+    `<span style="font-family:${HEAD};font-weight:400;font-size:21px;line-height:1;color:${RED}">&#8478;</span>` +
+    `<span style="flex:1 1 auto;height:1px;background:${LINE}"></span>` +
+  '</div>';
+
+// A diagnosis reads as two findings side by side, not as two more paragraphs.
+const finding = (label, text, colour) =>
+  `<div style="border-top:2px solid ${colour};padding-top:15px">` +
+  `<div style="font-family:${HEAD};font-weight:500;font-size:12px;letter-spacing:2.4px;` +
+  `text-transform:uppercase;color:${colour};margin:0 0 10px">${label}</div>` +
+  p(text, { fs: 16, lh: 26, mb: 0 }) + '</div>';
+
 const centred = (inner) => `<div style="text-align:center;max-width:700px;margin:0 auto 40px">${inner}</div>`;
 const col = (inner) => `<div style="max-width:680px;margin:0 auto">${inner}</div>`;
 const img = (file, w, h, alt, style) =>
@@ -283,7 +297,7 @@ const BACKGROUND = section(
       'the showroom floor, but from the shop floor. You learn what it costs to run the operation, what ' +
       'margins look like, where money gets wasted, and where customers get overcharged.', { mb: 0 }) +
     quote('He understands the cost structure of every deal because he spent years inside the machine before ' +
-          'he sat at the front of it.') +
+          'he sat at the front of it.') + mark() +
     `<div style="margin-top:36px">` +
     p('When he tells you a price is all-in, he knows exactly what “all-in” means — down to the OMVIC fee and ' +
       'the air conditioning charge.') +
@@ -331,14 +345,18 @@ const WHY = section(
   centred(eyebrow('Why “Prescriptions”?') + h2('The Metaphor Is Not An Accident') + rule('center')) +
   col(
     lede('Nav calls himself The Car Doctor because the problem he is solving feels like a diagnosis.') +
-    p(`<strong style="color:${RED}">The symptoms:</strong> you search for a car deal online, you find a price ` +
-      'that looks good, you drive to the dealership, you sit down, and the number changes. Freight gets ' +
-      'added. An admin fee appears. PDI was not included. Suddenly the deal you saw online is hundreds more ' +
-      'per month than what you budgeted. That is the disease.') +
-    p(`<strong style="color:${RED}">The prescription:</strong> publish the real, all-in price before the ` +
-      'customer walks in. Include every fee the dealer controls. Make the weekly payment the actual weekly ' +
-      'payment — plus government taxes and plates, and nothing else. No negotiation required.', { mb: 0 }) +
-    quote('CDD6 deals are labelled Rx #001 through Rx #006 because they are meant to be filled, not haggled over.') +
+    '<div style="margin:30px 0 0">' + row([
+      finding('The symptoms',
+        'You search for a car deal online, you find a price that looks good, you drive to the dealership, ' +
+        'you sit down, and the number changes. Freight gets added. An admin fee appears. PDI was not ' +
+        'included. Suddenly the deal you saw online is hundreds more per month than what you budgeted. ' +
+        'That is the disease.', INK),
+      finding('The prescription',
+        'Publish the real, all-in price before the customer walks in. Include every fee the dealer ' +
+        'controls. Make the weekly payment the actual weekly payment — plus government taxes and plates, ' +
+        'and nothing else. No negotiation required.', RED),
+    ], { gap: 34, basis: 250 }) + '</div>' +
+    quote('CDD6 deals are labelled Rx #001 through Rx #006 because they are meant to be filled, not haggled over.') + mark() +
     `<div style="margin-top:36px">` +
     p('You see the prescription. You call the number. The price on the phone is the price on the page. That ' +
       'is how it works.', { mb: 0 }) + '</div>'));
