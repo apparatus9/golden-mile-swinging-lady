@@ -37,7 +37,7 @@ const eyebrow = (t, c = RED) =>
   `letter-spacing:3px;text-transform:uppercase;color:${c}">${t}</p>`;
 
 const h1 = (t) =>
-  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(2.3rem,8.4cqw,4.4rem);` +
+  `<h1 style="margin:0;font-family:${HEAD};font-weight:500;font-size:clamp(2.6rem,11cqw,6rem);` +
   `line-height:1.08;text-transform:uppercase;letter-spacing:.5px;color:${INK}">${t}</h1>`;
 
 const h2 = (t, c = INK) =>
@@ -53,10 +53,10 @@ const rule = (align) =>
 
 // the red bar was a ::before; inline styles have no pseudo-elements, so it is real now
 const quote = (t, c = INK) =>
-  `<div style="margin:36px 0 0">` +
-  `<div style="width:44px;height:3px;background:${RED};margin:0 0 20px"></div>` +
-  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.35rem,3.6cqw,2rem);` +
-  `line-height:1.32;letter-spacing:.3px;color:${c}">${t}</div></div>`;
+  `<div style="margin:52px 0 0;text-align:center">` +
+  `<div style="width:56px;height:4px;background:${RED};margin:0 auto 26px"></div>` +
+  `<div style="font-family:${HEAD};font-weight:400;font-size:clamp(1.6rem,4.6cqw,2.6rem);` +
+  `line-height:1.24;letter-spacing:.2px;color:${c}">${t}</div></div>`;
 
 const btn = (href, label, kind) => {
   const base = `display:inline-block;font-family:${HEAD};font-weight:500;font-size:15px;` +
@@ -130,9 +130,9 @@ const HERO = section(
       btn('#gmc-landmark', 'Read Her Story', 'line') + '</div>',
     `<div style="text-align:center">` +
       img('swinging-lady.png', 543, 979, 'The Swinging Lady, the 40-foot illuminated figure above Golden Mile Chrysler since 1962',
-          'max-width:400px;width:100%;height:auto;margin:0 auto') + '</div>',
-  ], { basis: 280, align: 'center', weights: [1.5, 1] }),
-  { pad: 48, seam: false });
+          'max-width:470px;width:100%;height:auto;margin:0 auto') + '</div>',
+  ], { basis: 280, align: 'center', weights: [1.25, 1] }),
+  { pad: 64, seam: false });
 
 const STRIP = `<div style="background:transparent;padding:18px 22px;text-align:center;` +
   `border-top:1px solid ${LINE};border-bottom:1px solid ${LINE}">` +
@@ -189,13 +189,17 @@ const SEASONS = section(
   {});
 
 const tl = (yr, head, text, hot) =>
-  `<div style="display:flex;flex-wrap:wrap;gap:26px;padding:32px 0;border-top:1px solid ${LINE}">` +
-    `<div style="flex:0 0 168px">` +
-      `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(1.3rem,2.8cqw,1.9rem);` +
-      `line-height:1.05;letter-spacing:.5px;text-transform:uppercase;color:${RED}">${yr}</div>` +
-      (hot ? `<div style="width:26px;height:4px;background:${RED};margin-top:12px"></div>` : '') +
+  `<div style="display:flex;flex-wrap:wrap">` +
+    `<div style="flex:0 0 190px;text-align:right;padding:34px 30px 0 0">` +
+      `<div style="font-family:${HEAD};font-weight:500;font-size:clamp(1.15rem,2.4cqw,1.6rem);` +
+      `line-height:1.05;letter-spacing:.5px;text-transform:uppercase;color:${hot ? RED : INK}">${yr}</div>` +
     '</div>' +
-    `<div style="flex:1 1 320px;min-width:0">` + h3(head) + p(text, { mb: 0 }) + '</div>' +
+    `<div style="flex:1 1 300px;min-width:0;position:relative;border-left:1px solid ${LINE};` +
+    `padding:34px 0 38px 32px">` +
+      `<span style="position:absolute;left:${hot ? '-6px' : '-4px'};top:42px;width:${hot ? '11px' : '7px'};` +
+      `height:${hot ? '11px' : '7px'};background:${hot ? RED : INK};transform:rotate(45deg)"></span>` +
+      h3(head) + p(text, { mb: 0 }) +
+    '</div>' +
   '</div>';
 
 const TIMELINE = `<a id="gmc-timeline"></a>` + section(
